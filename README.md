@@ -1,1 +1,1 @@
-# Body & Mind App
+# Body & Mind App - Client
