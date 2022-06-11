@@ -18,7 +18,7 @@ export default function WorkoutList({ programId }) {
   }, []);
 
   return workouts === null || workouts.length === 0 ? (
-    <h1>Loading...</h1>
+    <h1>Loading Workouts...</h1>
   ) : (
     <div className="workoutsList">
       <ul>

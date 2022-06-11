@@ -19,7 +19,7 @@ export default function SetList({ exerciseId }) {
   }, []);
 
   return sets === null || sets.length === 0 ? (
-    <h1>Loading...</h1>
+    <h1>Loading Sets...</h1>
   ) : (
     <div className="setsList">
       <ul>

@@ -7,6 +7,7 @@ import {
   ProgramDetailsPage,
   WorkoutDetailsPage,
   ExerciseDetailsPage,
+  CreateProgramPage,
 } from "./pages/exportedPages";
 import { NavBar } from "./components/exportedComponents";
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/programs" element={<ProgramsPage />} />
         <Route path="/programs/:programId" element={<ProgramDetailsPage />} />
+        <Route path="/programs/new" element={<CreateProgramPage />} />
         <Route path="/workouts/:workoutId" element={<WorkoutDetailsPage />} />
         <Route
           path="/exercises/:exerciseId"
