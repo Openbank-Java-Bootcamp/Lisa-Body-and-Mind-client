@@ -3,11 +3,19 @@ import { Link } from "react-router-dom";
 
 export default function HomePage() {
   return (
-    <div>
+    <div className="homePage">
       HomePage
-      <Link to="/programs">My Programs</Link>
-      <Link to="/programs/new">New Program</Link>
-      <Link to="/progress">My Progress</Link>
+      <ul>
+        <li>
+          <Link to="/programs">My Programs</Link>
+        </li>
+        <li>
+          <Link to="/programs/new">New Program</Link>
+        </li>
+        <li>
+          <Link to="/progress">My Progress</Link>
+        </li>
+      </ul>
     </div>
   );
 }

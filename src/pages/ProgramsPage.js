@@ -1,6 +1,7 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { API_URL } from "../config";
+import { ProgramList } from "../components/exportedComponents";
 
 export default function ProgramsPage() {
   const [programs, setPrograms] = useState(null);
@@ -18,15 +19,9 @@ export default function ProgramsPage() {
     getAllPrograms();
   }, []);
 
-  programs === null && <h1>Loading...</h1>;
-
-  return programs === null ? (
+  return programs === null || programs.length === 0 ? (
     <h1>Loading...</h1>
   ) : (
-    <div>
-      ProgramsPage
-      <p>{programs[0].name}</p>
-      <p>{programs[1].name}</p>
-    </div>
+    <ProgramList programs={programs} />
   );
 }
