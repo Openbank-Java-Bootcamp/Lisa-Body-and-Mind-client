@@ -5,7 +5,6 @@ import { API_URL } from "../config";
 import { RepDetails } from "../components/exportedComponents";
 
 export default function SetDetails({ set, index }) {
-
   return set === null ? (
     <h1>Loading...</h1>
   ) : (
@@ -15,7 +14,7 @@ export default function SetDetails({ set, index }) {
       </p>
       <p>Rest: {set.rest.slice(3)} mins</p>
 
-      <RepDetails setId={set.id}/>
+      <RepDetails setId={set.id} />
     </div>
   );
 }

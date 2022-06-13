@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
+import { NewRep } from "../components/exportedComponents";
 
 export default function RepDetails({ setId }) {
   const [reps, setReps] = useState(null);
@@ -18,7 +18,7 @@ export default function RepDetails({ setId }) {
   }, []);
 
   return reps === null || reps.length === 0 ? (
-    <p>No reps added to this Set</p>
+    <NewRep setId={setId} />
   ) : (
     <div>
       <p>{reps.length} Reps</p>

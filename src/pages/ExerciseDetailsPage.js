@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
-import { SetList } from "../components/exportedComponents";
+import { NewSet, SetList } from "../components/exportedComponents";
 
 export default function ExerciseDetailsPage() {
   const [exercise, setExercise] = useState(null);
@@ -59,6 +59,7 @@ export default function ExerciseDetailsPage() {
       <p>Instructions: {exercise.exerciseType.instructions}</p>
 
       <SetList exerciseId={exerciseId} />
+      <NewSet exerciseId={exerciseId} exerciseSessionId="null" />
     </div>
   );
 }

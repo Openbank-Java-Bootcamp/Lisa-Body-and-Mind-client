@@ -8,6 +8,8 @@ import RepDetails from "./RepDetails";
 import NewUser from "./NewUser";
 import NewWorkout from "./NewWorkout";
 import NewExercise from "./NewExercise";
+import NewSet from "./NewSet";
+import NewRep from "./NewRep";
 
 export {
   NavBar,
@@ -20,4 +22,6 @@ export {
   NewUser,
   NewWorkout,
   NewExercise,
+  NewSet,
+  NewRep,
 };
