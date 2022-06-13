@@ -1,9 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import { LoginButton } from "../auth/exportedAuth";
 
 export default function HomePage() {
+  const { isAuthenticated, isLoading } = useAuth0();
 
-  return (
+  if (isLoading) {
+    return <div>Loading ...</div>;
+  }
+
+  return isAuthenticated ? (
     <div className="homePage">
       HomePage
       <ul>
@@ -17,6 +24,12 @@ export default function HomePage() {
           <Link to="/progress">My Progress</Link>
         </li>
       </ul>
+    </div>
+  ) : (
+    <div className="loggedOutHomePage">
+      <h1>Welcome to Body&Mind</h1>
+      <p>Please Log In</p>
+      <LoginButton />
     </div>
   );
 }
