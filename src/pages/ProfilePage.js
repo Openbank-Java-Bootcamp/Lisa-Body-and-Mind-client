@@ -1,23 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
+import { API_URL } from "../config";
+import { NewUser } from "../components/exportedComponents";
 
 export default function ProfilePage() {
-  const { user, isAuthenticated, isLoading, getAccessTokenSilently } =
-    useAuth0();
+  const [userDetails, setUserDetails] = useState(null);
+  const { user, isLoading, getAccessTokenSilently } = useAuth0();
 
-  getAccessTokenSilently().then((result) => console.log(result));
+  useEffect(() => {
+    getUserByEmail();
+  }, []);
+
+  const getUserByEmail = () => {
+    axios
+      // .get(`${API_URL}/api/users/email/${user?.email}`, {
+      //   headers: { Authorization: `Bearer ${storedToken}` },
+      // })
+      .get(`${API_URL}/api/users/email/${user?.email}`)
+      .then((response) => setUserDetails(response.data))
+      .catch((error) => console.error(error));
+  };
+
   if (isLoading) {
     return <div>Loading ...</div>;
   }
 
-  return isAuthenticated ? (
+  return userDetails !== null ? (
     <div className="profilePage">
-      <img src={user.picture} alt={user.name} />
-      <h2>{user.name}</h2>
-      <p>{user.email}</p>
-      <h3>User Metadata</h3>
+      <img src={userDetails.image} alt={user.email} style={{ width: "25%" }} />
+      <h2>{userDetails.fullName}</h2>
+      <p>{userDetails.username}</p>
+      <p>{userDetails.email}</p>
     </div>
   ) : (
-    <h1>Please authenticate</h1>
+    <NewUser />
   );
 }

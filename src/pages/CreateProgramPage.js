@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { API_URL } from "../config";
 
@@ -6,8 +8,21 @@ export default function CreateProgramPage() {
   const [name, setName] = useState("");
   const [creator, setCreator] = useState("USER");
   const [userId, setUserId] = useState(0);
-  // TODO add logged userId to the created program when have auth
+  const { user, isLoading } = useAuth0();
+  const navigate = useNavigate();
+
   // if ROLES then check logged users role if TRAINER change creator to such
+
+  const getUserId = () => {
+    axios
+      .get(`${API_URL}/api/users/email/${user?.email}`)
+      .then((response) => setUserId(response.data.id))
+      .catch((error) => console.error(error));
+  };
+
+  useEffect(() => {
+    getUserId();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +37,12 @@ export default function CreateProgramPage() {
         setCreator("USER");
       })
       .catch((error) => console.error(error));
+    navigate("/programs");
   };
+
+  if (isLoading) {
+    return <div>Loading ...</div>;
+  }
 
   return (
     <div className="createProgram">

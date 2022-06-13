@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../auth/exportedAuth";
+import { NewUser } from "../components/exportedComponents";
 
 export default function HomePage() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -12,7 +13,7 @@ export default function HomePage() {
 
   return isAuthenticated ? (
     <div className="homePage">
-      HomePage
+      <NewUser />
       <ul>
         <li>
           <Link to="/programs">My Programs</Link>

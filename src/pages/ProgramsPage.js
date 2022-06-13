@@ -6,29 +6,41 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export default function ProgramsPage() {
   const [programs, setPrograms] = useState(null);
-  const [storedToken, setStoredToken] = useState(null);
+  const [userPrograms, setUserPrograms] = useState(null);
+  const { user, isLoading, getAccessTokenSilently } = useAuth0();
 
-  //TODO when have security: only show programs TRAINER and USER (with user Id === logged user)
-  const { getAccessTokenSilently } = useAuth0();
-
-  getAccessTokenSilently().then((result) => setStoredToken(result));
-
-  const getAllPrograms = () => {
+  const getTrainerPrograms = () => {
     axios
-      .get(`${API_URL}/api/programs`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
+      .get(`${API_URL}/api/programs/creator/trainer`)
       .then((response) => setPrograms(response.data))
       .catch((error) => console.error(error));
   };
 
+  const getUserPrograms = () => {
+    axios
+      .get(`${API_URL}/api/users/email/${user?.email}`)
+      .then((response) =>
+        axios.get(`${API_URL}/api/programs/user/${response.data?.id}`)
+      )
+      .then((response) => setUserPrograms(response.data))
+      .catch((error) => console.error(error));
+  };
+
   useEffect(() => {
-    getAllPrograms();
+    getTrainerPrograms();
+    getUserPrograms();
   }, []);
+
+  if (isLoading) {
+    return <div>Loading ...</div>;
+  }
 
   return programs === null || programs.length === 0 ? (
     <h1>Loading...</h1>
   ) : (
-    <ProgramList programs={programs} />
+    <>
+      <ProgramList programs={programs} />
+      {userPrograms !== null && <ProgramList programs={userPrograms} />}
+    </>
   );
 }

@@ -1,6 +1,5 @@
 import "./styles/App.css";
 import { Routes, Route } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 import {
   HomePage,
   ProfilePage,
@@ -9,20 +8,15 @@ import {
   WorkoutDetailsPage,
   ExerciseDetailsPage,
   CreateProgramPage,
-  NewUser,
 } from "./pages/exportedPages";
 import { NavBar } from "./components/exportedComponents";
 import { PrivateRoute } from "./auth/exportedAuth";
 import { ErrorPage } from "./utils/exportedUtils";
 
 function App() {
-  const { isAuthenticated } = useAuth0();
-
   return (
     <div className="App">
       <NavBar />
-
-      {isAuthenticated && <NewUser />}
 
       <Routes>
         <Route path="/" element={<HomePage />} />

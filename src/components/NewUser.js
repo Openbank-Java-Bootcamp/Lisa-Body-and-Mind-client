@@ -4,30 +4,35 @@ import axios from "axios";
 import { API_URL } from "../config";
 
 export default function NewUser() {
-  const { user, isLoading, getAccessTokenSilently } = useAuth0();
   const [email, setEmail] = useState("");
-  const [isUserInDB, setIsUserInDB] = useState("true");
+  const [isUserInDB, setIsUserInDB] = useState(true);
   const [username, setUsername] = useState("");
   const [image, setImage] = useState("");
   const [fullName, setFullName] = useState("");
+  const { user, isLoading, getAccessTokenSilently } = useAuth0();
 
-  getAccessTokenSilently().then((result) => console.log(result));
 
   useEffect(() => {
     getUserByEmail();
     setEmail(user.email);
   }, []);
 
-  useEffect(() => {}, [isUserInDB]);
+  useEffect(() => {
+    getUserByEmail();
+  }, [isUserInDB]);
 
   const getUserByEmail = () => {
     axios
-      // .get(`${API_URL}/api/users/email/${user.email}`, {
+      // .get(`${API_URL}/api/users/verify-email/${user.email}`, {
       //   headers: { Authorization: `Bearer ${storedToken}` },
       // })
       .get(`${API_URL}/api/users/verify-email/${user?.email}`)
       .then((response) => setIsUserInDB(response.data))
       .catch((error) => console.error(error));
+  };
+
+  const refreshPage = () => {
+    window.location.reload();
   };
 
   const handleSubmit = (e) => {
@@ -45,7 +50,8 @@ export default function NewUser() {
       })
       .catch((error) => console.error(error));
 
-    setIsUserInDB("true");
+    setIsUserInDB(false);
+    refreshPage();
   };
 
   if (isLoading) {
