@@ -7,6 +7,7 @@ import SetDetails from "./SetDetails";
 import RepDetails from "./RepDetails";
 import NewUser from "./NewUser";
 import NewWorkout from "./NewWorkout";
+import NewExercise from "./NewExercise";
 
 export {
   NavBar,
@@ -18,4 +19,5 @@ export {
   RepDetails,
   NewUser,
   NewWorkout,
+  NewExercise,
 };

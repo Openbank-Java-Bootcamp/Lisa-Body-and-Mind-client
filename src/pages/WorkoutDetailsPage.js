@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
-import { ExerciseList } from "../components/exportedComponents";
+import { ExerciseList, NewExercise } from "../components/exportedComponents";
 
 export default function WorkoutDetailsPage() {
   const [workout, setWorkout] = useState(null);
@@ -37,6 +37,7 @@ export default function WorkoutDetailsPage() {
       {/* TODO when have auth, display created by (user name) or created by our trainers */}
 
       <ExerciseList workoutId={workoutId} />
+      <NewExercise workoutId={workoutId} />
     </div>
   );
 }
