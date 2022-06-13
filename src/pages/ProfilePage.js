@@ -9,10 +9,10 @@ export default function ProfilePage() {
   const { user, isLoading, getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
-    getUserByEmail();
+    getUserDetailsByEmail();
   }, []);
 
-  const getUserByEmail = () => {
+  const getUserDetailsByEmail = () => {
     axios
       // .get(`${API_URL}/api/users/email/${user?.email}`, {
       //   headers: { Authorization: `Bearer ${storedToken}` },

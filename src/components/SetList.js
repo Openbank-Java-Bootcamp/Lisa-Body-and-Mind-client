@@ -7,7 +7,7 @@ import SetDetails from "./SetDetails";
 export default function SetList({ exerciseId }) {
   const [sets, setSets] = useState(null);
 
-  const getSetsByWorkoutId = () => {
+  const getSetsByExerciseId = () => {
     axios
       .get(`${API_URL}/api/sets/exercise/${exerciseId}`)
       .then((response) => setSets(response.data))
@@ -15,7 +15,7 @@ export default function SetList({ exerciseId }) {
   };
 
   useEffect(() => {
-    getSetsByWorkoutId();
+    getSetsByExerciseId();
   }, []);
 
   return sets === null || sets.length === 0 ? (

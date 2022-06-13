@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { API_URL } from "../config";
 
-export default function CreateProgramPage() {
+export default function NewWorkout({ programId }) {
   const [name, setName] = useState("");
-  const [creator, setCreator] = useState("USER");
   const [userId, setUserId] = useState(0);
+  const [creator, setCreator] = useState("USER");
   const { user, isLoading } = useAuth0();
-  const navigate = useNavigate();
-
-  // if ROLES then check logged users role if TRAINER change creator to such
 
   const getUserIdByEmail = () => {
     axios
@@ -27,23 +23,28 @@ export default function CreateProgramPage() {
     getUserIdByEmail();
   }, []);
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = { name, creator, userId };
+    const requestBody = { name, creator, userId, programId };
 
     axios
-      // .post(`${API_URL}/api/programs/new`, {
+      // .post(`${API_URL}/api/workouts/new`, {
       //   headers: { Authorization: `Bearer ${storedToken}` }, requestBody
       // })
-      .post(`${API_URL}/api/programs/new`, requestBody)
+      .post(`${API_URL}/api/workouts/new`, requestBody)
       .then((response) => {
         setName("");
         setUserId(0);
         setCreator("USER");
       })
       .catch((error) => console.error(error));
-    navigate("/programs");
+
+    refreshPage();
   };
 
   if (isLoading) {
@@ -51,18 +52,15 @@ export default function CreateProgramPage() {
   }
 
   return (
-    <div className="createProgram">
-      <h3>New Program</h3>
-
+    <div className="newWorkout">
       <form onSubmit={handleSubmit}>
-        <label>Program Name:</label>
+        <label>Workout Name:</label>
         <input
           type="text"
           name="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-
         <button type="submit">Create</button>
       </form>
     </div>

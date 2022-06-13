@@ -13,15 +13,15 @@ export default function NewUser() {
 
 
   useEffect(() => {
-    getUserByEmail();
-    setEmail(user.email);
+    verifyUserInDBByEmail();
+    setEmail(user?.email);
   }, []);
 
   useEffect(() => {
-    getUserByEmail();
+    verifyUserInDBByEmail();
   }, [isUserInDB]);
 
-  const getUserByEmail = () => {
+  const verifyUserInDBByEmail = () => {
     axios
       // .get(`${API_URL}/api/users/verify-email/${user.email}`, {
       //   headers: { Authorization: `Bearer ${storedToken}` },

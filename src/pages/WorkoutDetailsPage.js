@@ -24,8 +24,9 @@ export default function WorkoutDetailsPage() {
   ) : (
     <div className="workoutDetails">
       <h3>{workout.name}</h3>
+
       <p>
-        From <strong>{workout.program.name}</strong> Program
+        From <strong>{workout.program.name}</strong>
       </p>
 
       {workout.creator === "TRAINER" && (
