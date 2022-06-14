@@ -19,7 +19,7 @@ export default function WorkoutDetailsPage() {
     getWorkoutById();
   }, []);
 
-  return workout === null || workout.length === 0 ? (
+  return workout === null ? (
     <h1>Loading...</h1>
   ) : (
     <div className="workoutDetails">

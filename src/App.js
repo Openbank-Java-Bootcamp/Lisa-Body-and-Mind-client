@@ -8,6 +8,7 @@ import {
   WorkoutDetailsPage,
   ExerciseDetailsPage,
   CreateProgramPage,
+  EditProgramPage,
 } from "./pages/exportedPages";
 import { NavBar } from "./components/exportedComponents";
 import { PrivateRoute } from "./auth/exportedAuth";
@@ -35,6 +36,10 @@ function App() {
         <Route
           path="/programs/new"
           element={<PrivateRoute component={<CreateProgramPage />} />}
+        />
+        <Route
+          path="/programs/edit/:programId"
+          element={<PrivateRoute component={<EditProgramPage />} />}
         />
         <Route
           path="/workouts/:workoutId"

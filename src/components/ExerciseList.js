@@ -17,7 +17,7 @@ export default function ExerciseList({ workoutId }) {
     getExercisesByWorkoutId();
   }, []);
 
-  return exercises === null || exercises.length === 0 ? (
+  return exercises === null ? (
     <h1>Loading Exercises...</h1>
   ) : (
     <div className="exercisesList">

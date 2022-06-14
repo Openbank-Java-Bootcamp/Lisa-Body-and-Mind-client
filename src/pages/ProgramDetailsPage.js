@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
 import { WorkoutList, NewWorkout } from "../components/exportedComponents";
@@ -19,7 +19,7 @@ export default function ProgramDetailsPage() {
     getProgramById();
   }, []);
 
-  return program === null || program.length === 0 ? (
+  return program === null ? (
     <h1>Loading...</h1>
   ) : (
     <div className="programDetails">
@@ -34,6 +34,8 @@ export default function ProgramDetailsPage() {
 
       <WorkoutList programId={programId} />
       <NewWorkout programId={programId} />
+
+      <Link to={`/programs/edit/${programId}`}>Edit Program</Link>
     </div>
   );
 }

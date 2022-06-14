@@ -19,7 +19,7 @@ export default function ExerciseDetailsPage() {
     getExerciseById();
   }, []);
 
-  return exercise === null || exercise.length === 0 ? (
+  return exercise === null ? (
     <h1>Loading...</h1>
   ) : (
     <div className="exerciseDetails">
