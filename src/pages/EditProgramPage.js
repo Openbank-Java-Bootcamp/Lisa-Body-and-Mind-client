@@ -21,7 +21,7 @@ export default function EditProgramPage() {
     getProgramById();
   }, []);
 
-  const handleFormSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const requestBody = { name };
@@ -41,7 +41,7 @@ export default function EditProgramPage() {
     <h1>Loading...</h1>
   ) : (
     <div className="editProgramPage">
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>Name:</label>
         <input
           type="text"

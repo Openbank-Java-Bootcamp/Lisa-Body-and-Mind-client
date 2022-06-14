@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
 
@@ -37,7 +37,7 @@ export default function EditExercisePage() {
     getAllExerciseTypes();
   }, []);
 
-  const handleFormSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const requestBody = { workoutId, exerciseTypeId };

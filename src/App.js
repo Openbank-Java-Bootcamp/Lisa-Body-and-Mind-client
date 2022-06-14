@@ -49,6 +49,10 @@ function App() {
           path="/exercises/:exerciseId"
           element={<PrivateRoute component={<ExerciseDetailsPage />} />}
         />
+        <Route
+          path="/sets/edit/:setId"
+          element={<PrivateRoute component={<ExerciseDetailsPage />} />}
+        />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>

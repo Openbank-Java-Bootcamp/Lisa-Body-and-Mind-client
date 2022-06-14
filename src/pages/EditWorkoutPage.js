@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
 
@@ -21,7 +21,7 @@ export default function EditWorkoutPage() {
     getWorkoutById();
   }, []);
 
-  const handleFormSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const requestBody = { name };
@@ -41,7 +41,7 @@ export default function EditWorkoutPage() {
     <h1>Loading...</h1>
   ) : (
     <div className="editWorkoutPage">
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>Name:</label>
         <input
           type="text"
