@@ -8,6 +8,8 @@ export default function EditWorkoutPage() {
   const { workoutId } = useParams();
   const navigate = useNavigate();
 
+  //   TODO edit name in exercise session too
+
   const getWorkoutById = () => {
     axios
       .get(`${API_URL}/api/workouts/${workoutId}`)

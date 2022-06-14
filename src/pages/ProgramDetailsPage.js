@@ -34,7 +34,6 @@ export default function ProgramDetailsPage() {
 
       <WorkoutList programId={programId} />
       <NewWorkout programId={programId} />
-
       <Link to={`/programs/edit/${programId}`}>Edit Program</Link>
     </div>
   );

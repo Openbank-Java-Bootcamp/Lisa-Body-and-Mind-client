@@ -60,6 +60,7 @@ export default function ExerciseDetailsPage() {
 
       <SetList exerciseId={exerciseId} />
       <NewSet exerciseId={exerciseId} exerciseSessionId="null" />
+      <Link to={`/exercises/edit/${exerciseId}`}>Edit Exercise</Link>
     </div>
   );
 }

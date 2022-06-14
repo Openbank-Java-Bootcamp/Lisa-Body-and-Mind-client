@@ -1,4 +1,5 @@
 import CreateProgramPage from "./CreateProgramPage";
+import EditExercisePage from "./EditExercisePage";
 import EditProgramPage from "./EditProgramPage";
 import EditWorkoutPage from "./EditWorkoutPage";
 import ExerciseDetailsPage from "./ExerciseDetailsPage";
@@ -18,4 +19,5 @@ export {
   CreateProgramPage,
   EditProgramPage,
   EditWorkoutPage,
+  EditExercisePage,
 };

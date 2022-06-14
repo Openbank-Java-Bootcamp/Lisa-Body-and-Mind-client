@@ -38,6 +38,7 @@ export default function WorkoutDetailsPage() {
 
       <ExerciseList workoutId={workoutId} />
       <NewExercise workoutId={workoutId} />
+      <Link to={`/workouts/edit/${workoutId}`}>Edit Workout</Link>
     </div>
   );
 }
