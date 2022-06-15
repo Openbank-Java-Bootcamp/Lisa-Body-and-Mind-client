@@ -1,12 +1,19 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { API_URL } from "../config";
 
 export default function EditSetPage() {
   const [rest, setRest] = useState("00:00:00");
+  const [exerciseId, setExerciseId] = useState(0);
+  const [exerciseSessionId, setExerciseSessionId] = useState(0);
   const [mins, setMins] = useState(0);
   const [secs, setSecs] = useState(0);
   const { setId } = useParams();
+
+  const refreshPage = () => {
+    window.location.reload();
+  };
 
   const restFormat = () => {
     let minutes = mins < 10 ? "0" + mins : mins;
@@ -18,7 +25,11 @@ export default function EditSetPage() {
   const getSetsById = () => {
     axios
       .get(`${API_URL}/api/sets/${setId}`)
-      .then((response) => setRest(response.data.rest))
+      .then((response) => {
+        setRest(response.data.rest);
+        setExerciseId(response.data.exerciseId);
+        setExerciseSessionId(response.data.exerciseSessionId);
+      })
       .catch((error) => console.error(error));
   };
 
@@ -52,7 +63,7 @@ export default function EditSetPage() {
 
   return (
     <div className="editSet">
-      <h3>New Program</h3>
+      <h3>Edit Set:</h3>
 
       <form onSubmit={handleSubmit}>
         <label>Set Rest minutes</label>
@@ -72,7 +83,7 @@ export default function EditSetPage() {
           value={secs}
           onChange={(e) => setSecs(e.target.value)}
         />
-        <button type="submit">Create</button>
+        <button type="submit">Update Set</button>
       </form>
     </div>
   );

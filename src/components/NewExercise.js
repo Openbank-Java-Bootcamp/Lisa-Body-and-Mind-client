@@ -61,7 +61,7 @@ export default function NewExercise({ workoutId }) {
             </option>
           ))}
         </select>
-        <button type="submit">Create</button>
+        <button type="submit">Add Exercise</button>
       </form>
     </div>
   );

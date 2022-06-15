@@ -15,7 +15,7 @@ export default function SetDetails({ set, index }) {
       <p>Rest: {set.rest.slice(3)} mins</p>
 
       <RepDetails setId={set.id} />
-      <Link to={`/sets/edit/${set.id}`}>Edit Workout</Link>
+      <Link to={`/sets/edit/${set.id}`}>Edit Set</Link>
     </div>
   );
 }

@@ -5,6 +5,9 @@ import { API_URL } from "../config";
 
 export default function EditWorkoutPage() {
   const [name, setName] = useState("");
+  const [creator, setCreator] = useState("USER");
+  const [userId, setUserId] = useState(0);
+  const [programId, setProgramId] = useState(0);
   const { workoutId } = useParams();
   const navigate = useNavigate();
 
@@ -13,18 +16,25 @@ export default function EditWorkoutPage() {
   const getWorkoutById = () => {
     axios
       .get(`${API_URL}/api/workouts/${workoutId}`)
-      .then((response) => setName(response.data.name))
+      .then((response) => {
+        console.log(response.data);
+        setName(response.data.name);
+        setCreator(response.data.creator);
+        setUserId(response.data.userId);
+        setProgramId(response.data.program.id);
+      })
       .catch((error) => console.error(error));
   };
 
   useEffect(() => {
     getWorkoutById();
+    console.log(name, creator, userId, programId);
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = { name };
+    const requestBody = { name, creator, userId, programId };
 
     axios
       //   .put(`${API_URL}/api/workouts/edit/${workoutId}`, requestBody, {
@@ -33,12 +43,15 @@ export default function EditWorkoutPage() {
       .put(`${API_URL}/api/workouts/edit/${workoutId}`, requestBody)
       .then((response) => {
         setName("");
+        setCreator("USER");
+        setUserId(0);
+        setProgramId(0);
         navigate(`/workouts/${workoutId}`);
       })
       .catch((error) => console.error(error));
   };
 
-  return name === "" ? (
+  return userId === 0 || programId === 0 ? (
     <h1>Loading...</h1>
   ) : (
     <div className="editWorkoutPage">

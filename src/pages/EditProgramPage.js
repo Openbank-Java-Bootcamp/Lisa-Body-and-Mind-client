@@ -5,6 +5,8 @@ import { API_URL } from "../config";
 
 export default function EditProgramPage() {
   const [name, setName] = useState("");
+  const [creator, setCreator] = useState("USER");
+  const [userId, setUserId] = useState(0);
   const { programId } = useParams();
   const navigate = useNavigate();
 
@@ -13,7 +15,11 @@ export default function EditProgramPage() {
   const getProgramById = () => {
     axios
       .get(`${API_URL}/api/programs/${programId}`)
-      .then((response) => setName(response.data.name))
+      .then((response) => {
+        setName(response.data.name);
+        setCreator(response.data.creator);
+        setUserId(response.data.userId);
+      })
       .catch((error) => console.error(error));
   };
 
@@ -24,7 +30,7 @@ export default function EditProgramPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = { name };
+    const requestBody = { name, creator, userId };
 
     axios
       //   .put(`${API_URL}/api/programs/edit/${programId}`, requestBody, {
@@ -33,6 +39,8 @@ export default function EditProgramPage() {
       .put(`${API_URL}/api/programs/edit/${programId}`, requestBody)
       .then((response) => {
         setName("");
+        setCreator("USER");
+        setUserId(0);
         navigate(`/programs/${programId}`);
       });
   };
@@ -50,7 +58,7 @@ export default function EditProgramPage() {
           onChange={(e) => setName(e.target.value)}
         />
 
-        <button type="submit">Update Project</button>
+        <button type="submit">Update Program</button>
       </form>
     </div>
   );

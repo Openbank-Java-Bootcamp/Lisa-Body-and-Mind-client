@@ -60,7 +60,7 @@ export default function NewWorkout({ programId }) {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <button type="submit">Create</button>
+        <button type="submit">Add Workout</button>
       </form>
     </div>
   );

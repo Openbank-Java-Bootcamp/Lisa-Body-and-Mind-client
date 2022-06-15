@@ -9,6 +9,9 @@ import {
   ExerciseDetailsPage,
   CreateProgramPage,
   EditProgramPage,
+  EditWorkoutPage,
+  EditExercisePage,
+  EditSetPage,
 } from "./pages/exportedPages";
 import { NavBar } from "./components/exportedComponents";
 import { PrivateRoute } from "./auth/exportedAuth";
@@ -16,7 +19,7 @@ import { ErrorPage } from "./utils/exportedUtils";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
-  const { isAuthenticated, isLoading } = useAuth0();
+  const { isLoading } = useAuth0();
 
   if (isLoading) {
     return <div>Loading ...</div>;
@@ -53,12 +56,20 @@ function App() {
           element={<PrivateRoute component={<WorkoutDetailsPage />} />}
         />
         <Route
+          path="/workouts/edit/:workoutId"
+          element={<PrivateRoute component={<EditWorkoutPage />} />}
+        />
+        <Route
           path="/exercises/:exerciseId"
           element={<PrivateRoute component={<ExerciseDetailsPage />} />}
         />
         <Route
+          path="/exercises/edit/:exerciseId"
+          element={<PrivateRoute component={<EditExercisePage />} />}
+        />
+        <Route
           path="/sets/edit/:setId"
-          element={<PrivateRoute component={<ExerciseDetailsPage />} />}
+          element={<PrivateRoute component={<EditSetPage />} />}
         />
 
         <Route path="*" element={<ErrorPage />} />

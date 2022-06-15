@@ -16,8 +16,8 @@ export default function EditExercisePage() {
     axios
       .get(`${API_URL}/api/exercises/${exerciseId}`)
       .then((response) => {
-        setWorkoutId(response.data.workoutId);
-        setExerciseTypeId(response.data.exerciseTypeId);
+        setWorkoutId(response.data.workout.id);
+        setExerciseTypeId(response.data.exerciseType.id);
       })
       .catch((error) => console.error(error));
   };
@@ -55,7 +55,10 @@ export default function EditExercisePage() {
       .catch((error) => console.error(error));
   };
 
-  return exerciseTypeList === null || exerciseTypeList.length === 0 ? (
+  return workoutId === 0 ||
+    exerciseTypeId === 0 ||
+    exerciseTypeList === null ||
+    exerciseTypeList.length === 0 ? (
     <h1>Loading...</h1>
   ) : (
     <div className="newExercise">
@@ -75,7 +78,7 @@ export default function EditExercisePage() {
             </option>
           ))}
         </select>
-        <button type="submit">Create</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

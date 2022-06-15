@@ -39,7 +39,7 @@ export default function NewSet({ exerciseId, exerciseSessionId }) {
 
   return (
     <div className="newSet">
-      <h3>New Program</h3>
+      <h3>New Set</h3>
 
       <form onSubmit={handleSubmit}>
         <label>Set Rest minutes</label>
@@ -63,7 +63,7 @@ export default function NewSet({ exerciseId, exerciseSessionId }) {
             restFormat(mins, e.target.value);
           }}
         />
-        <button type="submit">Create</button>
+        <button type="submit">Add Set</button>
       </form>
     </div>
   );

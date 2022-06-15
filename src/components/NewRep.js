@@ -27,12 +27,11 @@ export default function NewRep({ setId }) {
             setRepNumber(0);
             setWeight(0);
             setWeightSystem("");
+            refreshPage();
           })
           .catch((error) => console.error(error));
       }
     }
-
-    refreshPage();
   };
 
   return (
@@ -67,7 +66,7 @@ export default function NewRep({ setId }) {
           <option value={"KG"}>kg</option>
           <option value={"LBS"}>lbs</option>
         </select>
-        <button type="submit">Create</button>
+        <button type="submit">Add Reps</button>
       </form>
     </div>
   );
