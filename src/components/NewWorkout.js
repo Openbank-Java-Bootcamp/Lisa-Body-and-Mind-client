@@ -9,6 +9,10 @@ export default function NewWorkout({ programId }) {
   const [creator, setCreator] = useState("USER");
   const { user, isLoading } = useAuth0();
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   const getUserIdByEmail = () => {
     axios
       // .get(`${API_URL}/api/users/email/${user?.email}`, {
@@ -22,10 +26,6 @@ export default function NewWorkout({ programId }) {
   useEffect(() => {
     getUserIdByEmail();
   }, []);
-
-  const refreshPage = () => {
-    window.location.reload();
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,10 +41,9 @@ export default function NewWorkout({ programId }) {
         setName("");
         setUserId(0);
         setCreator("USER");
+        refreshPage();
       })
       .catch((error) => console.error(error));
-
-    refreshPage();
   };
 
   if (isLoading) {

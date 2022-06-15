@@ -19,6 +19,10 @@ export default function ProgramDetailsPage() {
     getProgramById();
   }, []);
 
+  const refreshList = () => {
+    getProgramById();
+  };
+
   return program === null ? (
     <h1>Loading...</h1>
   ) : (
@@ -32,9 +36,9 @@ export default function ProgramDetailsPage() {
       )}
       {/* TODO when have auth, display created by (user name) or created by our trainers */}
 
-      <WorkoutList programId={programId} />
-      <NewWorkout programId={programId} />
-      <Link to={`/programs/edit/${programId}`}>Edit Program</Link>
+      <WorkoutList programId={program.id} />
+      <NewWorkout programId={program.id} refreshParent={refreshList} />
+      <Link to={`/programs/edit/${program.id}`}>Edit Program</Link>
     </div>
   );
 }

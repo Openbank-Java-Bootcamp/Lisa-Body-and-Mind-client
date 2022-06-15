@@ -34,7 +34,8 @@ export default function EditWorkoutPage() {
       .then((response) => {
         setName("");
         navigate(`/workouts/${workoutId}`);
-      });
+      })
+      .catch((error) => console.error(error));
   };
 
   return name === "" ? (

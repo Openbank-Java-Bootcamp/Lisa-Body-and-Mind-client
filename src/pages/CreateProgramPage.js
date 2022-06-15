@@ -13,6 +13,10 @@ export default function CreateProgramPage() {
 
   // if ROLES then check logged users role if TRAINER change creator to such
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   const getUserIdByEmail = () => {
     axios
       // .get(`${API_URL}/api/users/email/${user?.email}`, {
@@ -41,6 +45,7 @@ export default function CreateProgramPage() {
         setName("");
         setUserId(0);
         setCreator("USER");
+        refreshPage();
       })
       .catch((error) => console.error(error));
     navigate("/programs");

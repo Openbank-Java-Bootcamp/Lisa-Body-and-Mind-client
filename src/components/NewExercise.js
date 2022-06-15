@@ -36,10 +36,9 @@ export default function NewExercise({ workoutId }) {
       .post(`${API_URL}/api/exercises/new`, requestBody)
       .then((response) => {
         setExerciseTypeId(0);
+        refreshPage();
       })
       .catch((error) => console.error(error));
-
-    refreshPage();
   };
 
   return exerciseTypeList === null || exerciseTypeList.length === 0 ? (

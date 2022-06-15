@@ -12,17 +12,14 @@ export default function NewSet({ exerciseId, exerciseSessionId }) {
     window.location.reload();
   };
 
-  const restFormat = () => {
-    let minutes = mins < 10 ? "0" + mins : mins;
-    let seconds = secs < 10 ? "0" + secs : secs;
-
+  const restFormat = (m, s) => {
+    let minutes = m < 10 ? "0" + m : m;
+    let seconds = s < 10 ? "0" + s : s;
     setRest(`00:${minutes}:${seconds}`);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    restFormat();
 
     const requestBody = { rest, exerciseId, exerciseSessionId };
 
@@ -35,9 +32,9 @@ export default function NewSet({ exerciseId, exerciseSessionId }) {
         setRest("00:00:00");
         setMins(0);
         setSecs(0);
+        refreshPage();
       })
       .catch((error) => console.error(error));
-    refreshPage();
   };
 
   return (
@@ -52,6 +49,7 @@ export default function NewSet({ exerciseId, exerciseSessionId }) {
           value={mins}
           onChange={(e) => {
             setMins(e.target.value);
+            restFormat(e.target.value, secs);
           }}
         />
 
@@ -60,7 +58,10 @@ export default function NewSet({ exerciseId, exerciseSessionId }) {
           type="number"
           name="secs"
           value={secs}
-          onChange={(e) => setSecs(e.target.value)}
+          onChange={(e) => {
+            setSecs(e.target.value);
+            restFormat(mins, e.target.value);
+          }}
         />
         <button type="submit">Create</button>
       </form>

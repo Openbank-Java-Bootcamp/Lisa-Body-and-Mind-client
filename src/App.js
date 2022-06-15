@@ -13,14 +13,21 @@ import {
 import { NavBar } from "./components/exportedComponents";
 import { PrivateRoute } from "./auth/exportedAuth";
 import { ErrorPage } from "./utils/exportedUtils";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
+  const { isAuthenticated, isLoading } = useAuth0();
+
+  if (isLoading) {
+    return <div>Loading ...</div>;
+  }
+
   return (
     <div className="App">
       <NavBar />
-
       <Routes>
         <Route path="/" element={<HomePage />} />
+
         <Route
           path="/profile"
           element={<PrivateRoute component={<ProfilePage />} />}
@@ -53,6 +60,7 @@ function App() {
           path="/sets/edit/:setId"
           element={<PrivateRoute component={<ExerciseDetailsPage />} />}
         />
+
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>

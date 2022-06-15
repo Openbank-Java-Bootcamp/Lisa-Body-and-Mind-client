@@ -51,7 +51,8 @@ export default function EditExercisePage() {
         setWorkoutId(0);
         setExerciseTypeId(0);
         navigate(`/exercises/${exerciseId}`);
-      });
+      })
+      .catch((error) => console.error(error));
   };
 
   return exerciseTypeList === null || exerciseTypeList.length === 0 ? (
