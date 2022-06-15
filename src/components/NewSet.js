@@ -3,7 +3,6 @@ import axios from "axios";
 import { API_URL } from "../config";
 
 export default function NewSet({ exerciseId, exerciseSessionId }) {
-  //TODO add exerciseSessionId when created
   const [rest, setRest] = useState("00:00:00");
   const [mins, setMins] = useState(0);
   const [secs, setSecs] = useState(0);

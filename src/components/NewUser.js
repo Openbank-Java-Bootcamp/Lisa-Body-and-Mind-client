@@ -11,7 +11,6 @@ export default function NewUser() {
   const [fullName, setFullName] = useState("");
   const { user, isLoading, getAccessTokenSilently } = useAuth0();
 
-
   useEffect(() => {
     verifyUserInDBByEmail();
     setEmail(user?.email);
@@ -47,11 +46,10 @@ export default function NewUser() {
         setUsername("");
         setImage("");
         setFullName("");
+        setIsUserInDB(false);
+        refreshPage();
       })
       .catch((error) => console.error(error));
-
-    setIsUserInDB(false);
-    refreshPage();
   };
 
   if (isLoading) {

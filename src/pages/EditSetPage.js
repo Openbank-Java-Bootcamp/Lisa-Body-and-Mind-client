@@ -44,7 +44,6 @@ export default function EditSetPage() {
     const exerciseSessionId = "null";
 
     const requestBody = { rest, exerciseId, exerciseSessionId };
-    console.log(requestBody, setId);
     axios
       // .put(`${API_URL}/api/sets/edit/${setId}`, {
       //   headers: { Authorization: `Bearer ${storedToken}` }, requestBody

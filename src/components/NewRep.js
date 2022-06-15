@@ -66,7 +66,7 @@ export default function NewRep({ setId }) {
           <option value={"KG"}>kg</option>
           <option value={"LBS"}>lbs</option>
         </select>
-        <button type="submit">Add Reps</button>
+        <button type="submit">Add Rep</button>
       </form>
     </div>
   );

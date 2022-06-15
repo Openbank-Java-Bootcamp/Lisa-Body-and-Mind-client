@@ -11,13 +11,10 @@ export default function EditWorkoutPage() {
   const { workoutId } = useParams();
   const navigate = useNavigate();
 
-  //   TODO edit name in exercise session too
-
   const getWorkoutById = () => {
     axios
       .get(`${API_URL}/api/workouts/${workoutId}`)
       .then((response) => {
-        console.log(response.data);
         setName(response.data.name);
         setCreator(response.data.creator);
         setUserId(response.data.userId);
@@ -28,7 +25,6 @@ export default function EditWorkoutPage() {
 
   useEffect(() => {
     getWorkoutById();
-    console.log(name, creator, userId, programId);
   }, []);
 
   const handleSubmit = (e) => {

@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
 import { ExerciseList, NewExercise } from "../components/exportedComponents";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Button } from "antd";
 
 export default function WorkoutDetailsPage() {
   const [workout, setWorkout] = useState(null);
+  const [userId, setUserId] = useState(null);
   const { workoutId } = useParams();
+  const { user } = useAuth0();
+  const navigate = useNavigate();
 
   const getWorkoutById = () => {
     axios
@@ -15,15 +20,40 @@ export default function WorkoutDetailsPage() {
       .catch((error) => console.error(error));
   };
 
+  const getUserIdByEmail = () => {
+    axios
+      // .get(`${API_URL}/api/users/email/${user?.email}`, {
+      //   headers: { Authorization: `Bearer ${storedToken}` },
+      // })
+      .get(`${API_URL}/api/users/email/${user?.email}`)
+      .then((response) => setUserId(response.data.id))
+      .catch((error) => console.error(error));
+  };
+
   useEffect(() => {
     getWorkoutById();
+    getUserIdByEmail();
   }, []);
 
-  return workout === null ? (
+  const deleteWorkout = () => {
+    axios
+    .delete(`${API_URL}/api/workouts/delete/${workoutId}`)
+    .then(() => navigate(`/programs/${workout?.program.id}`))
+    .catch((error) => console.error(error)); 
+  }
+
+  return workout === null || userId === null ? (
     <h1>Loading...</h1>
   ) : (
     <div className="workoutDetails">
       <h3>{workout.name}</h3>
+
+      {workout.userId === userId && (
+        <>
+          <Link to={`/workouts/edit/${workoutId}`}>Edit Workout</Link>
+          <Button onClick={() => deleteWorkout()}>Delete Workout</Button>
+        </>
+      )}
 
       <p>
         From <strong>{workout.program.name}</strong>
@@ -34,11 +64,10 @@ export default function WorkoutDetailsPage() {
           <strong>Created by:</strong>Body&Mind Trainers
         </p>
       )}
-      {/* TODO when have auth, display created by (user name) or created by our trainers */}
 
       <ExerciseList workoutId={workoutId} />
-      <NewExercise workoutId={workoutId} />
-      <Link to={`/workouts/edit/${workoutId}`}>Edit Workout</Link>
+
+      {workout.userId === userId && <NewExercise workoutId={workoutId} />}
     </div>
   );
 }

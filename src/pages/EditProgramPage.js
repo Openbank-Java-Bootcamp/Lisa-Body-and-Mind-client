@@ -10,8 +10,6 @@ export default function EditProgramPage() {
   const { programId } = useParams();
   const navigate = useNavigate();
 
-  //   TODO edit name in exercise session too
-
   const getProgramById = () => {
     axios
       .get(`${API_URL}/api/programs/${programId}`)

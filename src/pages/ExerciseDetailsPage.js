@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
 import { NewSet, SetList } from "../components/exportedComponents";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Button } from "antd";
 
 export default function ExerciseDetailsPage() {
   const [exercise, setExercise] = useState(null);
+  const [userId, setUserId] = useState(null);
   const { exerciseId } = useParams();
+  const { user } = useAuth0();
+  const navigate = useNavigate();
 
   const getExerciseById = () => {
     axios
@@ -15,11 +20,29 @@ export default function ExerciseDetailsPage() {
       .catch((error) => console.error(error));
   };
 
+  const getUserIdByEmail = () => {
+    axios
+      // .get(`${API_URL}/api/users/email/${user?.email}`, {
+      //   headers: { Authorization: `Bearer ${storedToken}` },
+      // })
+      .get(`${API_URL}/api/users/email/${user?.email}`)
+      .then((response) => setUserId(response.data.id))
+      .catch((error) => console.error(error));
+  };
+
   useEffect(() => {
     getExerciseById();
+    getUserIdByEmail();
   }, []);
 
-  return exercise === null ? (
+  const deleteExercise = () => {
+    axios
+      .delete(`${API_URL}/api/exercises/delete/${exerciseId}`)
+      .then(() => navigate(`/workouts/${exercise?.workout.id}`))
+      .catch((error) => console.error(error));
+  };
+
+  return exercise === null || userId === null ? (
     <h1>Loading...</h1>
   ) : (
     <div className="exerciseDetails">
@@ -37,16 +60,20 @@ export default function ExerciseDetailsPage() {
 
       <h3>{exercise.exerciseType.name}</h3>
 
+      {exercise.workout.userId === userId && (
+        <>
+          <Link to={`/exercises/edit/${exerciseId}`}>Edit Exercise</Link>
+          <Button onClick={() => deleteExercise()}>Delete Exercise</Button>
+        </>
+      )}
+
       <p>
         From <strong>{exercise.workout.program.name}</strong> Program
       </p>
 
-      {exercise.exerciseType.creator === "TRAINER" && (
-        <p>
-          <strong>Created by:</strong>Body&Mind Trainers
-        </p>
-      )}
-      {/* TODO when have auth, display created by (user name) or created by our trainers */}
+      <p>
+        From <strong>{exercise.workout.name}</strong> Workout
+      </p>
 
       <p>Difficulty: {exercise.exerciseType.difficulty.toLowerCase()}</p>
 
@@ -59,8 +86,9 @@ export default function ExerciseDetailsPage() {
       <p>Instructions: {exercise.exerciseType.instructions}</p>
 
       <SetList exerciseId={exerciseId} />
-      <NewSet exerciseId={exerciseId} exerciseSessionId="null" />
-      <Link to={`/exercises/edit/${exerciseId}`}>Edit Exercise</Link>
+      {exercise.workout.userId === userId && (
+        <NewSet exerciseId={exerciseId} exerciseSessionId="null" />
+      )}
     </div>
   );
 }
