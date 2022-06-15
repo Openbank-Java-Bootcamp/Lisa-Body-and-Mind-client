@@ -13,8 +13,8 @@ export default function NewSet({ exerciseId, exerciseSessionId }) {
   };
 
   const restFormat = (m, s) => {
-    let minutes = m < 10 ? "0" + m : m;
-    let seconds = s < 10 ? "0" + s : s;
+    const minutes = m < 10 ? "0" + m : m;
+    const seconds = s < 10 ? "0" + s : s;
     setRest(`00:${minutes}:${seconds}`);
   };
 

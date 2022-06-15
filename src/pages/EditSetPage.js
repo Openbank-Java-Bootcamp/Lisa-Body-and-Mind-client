@@ -1,25 +1,26 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { API_URL } from "../config";
 
 export default function EditSetPage() {
   const [rest, setRest] = useState("00:00:00");
   const [exerciseId, setExerciseId] = useState(0);
-  const [exerciseSessionId, setExerciseSessionId] = useState(0);
   const [mins, setMins] = useState(0);
   const [secs, setSecs] = useState(0);
   const { setId } = useParams();
+  const navigate = useNavigate();
 
-  const refreshPage = () => {
-    window.location.reload();
+  const restFormat = (m, s) => {
+    const minutes = m < 10 ? "0" + m : m;
+    const seconds = s < 10 ? "0" + s : s;
+    setRest(`00:${minutes}:${seconds}`);
   };
 
-  const restFormat = () => {
-    let minutes = mins < 10 ? "0" + mins : mins;
-    let seconds = secs < 10 ? "0" + secs : secs;
-
-    setRest(`00:${minutes}:${seconds}`);
+  const restToMinsSecs = (restTime) => {
+    let restARR = restTime.split(":");
+    setMins(parseInt(restARR[1]));
+    setSecs(parseInt(restARR[2]));
   };
 
   const getSetsById = () => {
@@ -27,38 +28,36 @@ export default function EditSetPage() {
       .get(`${API_URL}/api/sets/${setId}`)
       .then((response) => {
         setRest(response.data.rest);
-        setExerciseId(response.data.exerciseId);
-        setExerciseSessionId(response.data.exerciseSessionId);
+        restToMinsSecs(response.data.rest);
+        setExerciseId(response.data.exercise.id);
       })
       .catch((error) => console.error(error));
   };
 
   useEffect(() => {
     getSetsById();
-    let restARR = rest.split(":");
-    setMins(parseInt(restARR[1]));
-    setSecs(parseInt(restARR[2]));
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    restFormat();
+    const exerciseSessionId = "null";
 
     const requestBody = { rest, exerciseId, exerciseSessionId };
-
+    console.log(requestBody, setId);
     axios
-      // .post(`${API_URL}/api/sets/new`, {
+      // .put(`${API_URL}/api/sets/edit/${setId}`, {
       //   headers: { Authorization: `Bearer ${storedToken}` }, requestBody
       // })
-      .post(`${API_URL}/api/sets/new`, requestBody)
+      .put(`${API_URL}/api/sets/edit/${setId}`, requestBody)
       .then((response) => {
         setRest("00:00:00");
         setMins(0);
         setSecs(0);
+        setExerciseId(0);
+        navigate(`/exercises/${exerciseId}`);
       })
       .catch((error) => console.error(error));
-    refreshPage();
   };
 
   return (
@@ -73,6 +72,7 @@ export default function EditSetPage() {
           value={mins}
           onChange={(e) => {
             setMins(e.target.value);
+            restFormat(e.target.value, secs);
           }}
         />
 
@@ -81,7 +81,10 @@ export default function EditSetPage() {
           type="number"
           name="secs"
           value={secs}
-          onChange={(e) => setSecs(e.target.value)}
+          onChange={(e) => {
+            setSecs(e.target.value);
+            restFormat(mins, e.target.value);
+          }}
         />
         <button type="submit">Update Set</button>
       </form>
