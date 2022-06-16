@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { API_URL } from "../config";
+import "../styles/form.css";
 
 export default function NewWorkout({ programId }) {
   const [name, setName] = useState("");
@@ -53,14 +54,23 @@ export default function NewWorkout({ programId }) {
   return (
     <div className="newWorkout">
       <form onSubmit={handleSubmit}>
-        <label>Workout Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <button type="submit">Add Workout</button>
+        <div className="group">
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <span className="highlight"></span>
+          <span className="bar"></span>
+          <label>Workout name</label>
+          <button type="submit" className="button buttonBlue">
+            Add workout
+            <div className="ripples buttonRipples">
+              <span className="ripplesCircle"></span>
+            </div>
+          </button>
+        </div>
       </form>
     </div>
   );

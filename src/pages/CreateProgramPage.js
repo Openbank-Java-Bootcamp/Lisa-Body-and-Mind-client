@@ -57,18 +57,25 @@ export default function CreateProgramPage() {
 
   return (
     <div className="createProgram">
-      <h3>New Program</h3>
-
       <form onSubmit={handleSubmit}>
-        <label>Program Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-
-        <button type="submit">Create</button>
+        <h2>New Program</h2>
+        <div className="group">
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <span className="highlight"></span>
+          <span className="bar"></span>
+          <label>Program name</label>
+        </div>
+        <button type="submit" className="button buttonBlue">
+          Create
+          <div className="ripples buttonRipples">
+            <span className="ripplesCircle"></span>
+          </div>
+        </button>
       </form>
     </div>
   );

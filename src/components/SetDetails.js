@@ -50,7 +50,7 @@ export default function SetDetails({ set, index }) {
       )}
       <p>Rest: {set.rest.slice(3)} mins</p>
 
-      <RepDetails set={set} />
+      <RepDetails set={set} index={index + 1} />
     </div>
   );
 }

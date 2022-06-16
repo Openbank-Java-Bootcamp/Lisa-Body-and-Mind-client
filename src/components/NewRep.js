@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { API_URL } from "../config";
 
-export default function NewRep({ setId }) {
+export default function NewRep({ set, index }) {
   const [repNumber, setRepNumber] = useState(0);
   const [weight, setWeight] = useState(0);
   const [weightSystem, setWeightSystem] = useState("");
@@ -14,6 +14,7 @@ export default function NewRep({ setId }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const setId = set?.id;
     const requestBody = { weight, weightSystem, setId };
 
     if (repNumber > 0) {
@@ -37,23 +38,32 @@ export default function NewRep({ setId }) {
   return (
     <div className="newRep">
       <form onSubmit={handleSubmit}>
-        <label>Number of reps:</label>
-        <input
-          type="number"
-          name="repNumber"
-          value={repNumber}
-          onChange={(e) => {
-            setRepNumber(e.target.value);
-          }}
-        />
+        <h2>New Reps for Set {index}</h2>
+        <div className="group">
+          <input
+            type="number"
+            name="repNumber"
+            value={repNumber}
+            onChange={(e) => {
+              setRepNumber(e.target.value);
+            }}
+          />
+          <span className="highlight"></span>
+          <span className="bar"></span>
+          <label>Number of reps</label>
+        </div>
 
-        <label>Weight:</label>
-        <input
-          type="number"
-          name="weight"
-          value={weight}
-          onChange={(e) => setWeight(e.target.value)}
-        />
+        <div className="group">
+          <input
+            type="number"
+            name="weight"
+            value={weight}
+            onChange={(e) => setWeight(e.target.value)}
+          />
+          <span className="highlight"></span>
+          <span className="bar"></span>
+          <label>Weight</label>
+        </div>
 
         <select
           name="weightSystem"
@@ -66,7 +76,12 @@ export default function NewRep({ setId }) {
           <option value={"KG"}>kg</option>
           <option value={"LBS"}>lbs</option>
         </select>
-        <button type="submit">Add Rep</button>
+        <button type="submit" className="button buttonBlue">
+          Add reps
+          <div className="ripples buttonRipples">
+            <span className="ripplesCircle"></span>
+          </div>
+        </button>
       </form>
     </div>
   );

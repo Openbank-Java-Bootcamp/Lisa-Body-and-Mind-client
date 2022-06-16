@@ -3,6 +3,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { API_URL } from "../config";
 import { NewUser } from "../components/exportedComponents";
+import "../styles/ProfilePage.css";
+import { Button } from "antd";
 
 export default function ProfilePage() {
   const [userDetails, setUserDetails] = useState(null);
@@ -28,10 +30,17 @@ export default function ProfilePage() {
 
   return userDetails !== null ? (
     <div className="profilePage">
-      <img src={userDetails.image} alt={user.email} style={{ width: "25%" }} />
-      <h2>{userDetails.fullName}</h2>
-      <p>{userDetails.username}</p>
-      <p>{userDetails.email}</p>
+      <div className="card">
+        <img
+          src={userDetails.image}
+          alt={user.email}
+          style={{ width: "25%" }}
+        />
+        <h2>{userDetails.fullName}</h2>
+        <p className="title">{userDetails.username}</p>
+        <p>{userDetails.email}</p>
+        <Button>Edit</Button>
+      </div>
     </div>
   ) : (
     <NewUser />

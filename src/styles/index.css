@@ -1,12 +1,21 @@
 body {
+  color: rgb(34, 33, 33);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Manrope", sans-serif;
   background-color: #f6f0ec;
 }
-
-
 
 li {
   list-style-type: none;
   margin-left: -2em;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(34, 33, 33);
+}
+
+a:hover {
+  color: rgb(177, 100, 28);
 }

@@ -1,0 +1,40 @@
+.card {
+  width: 100%;
+  min-width: 200px;
+  max-width: 340px;
+  margin: 10em auto;
+  padding: 2em 2em 1em 2em;
+  background: #fafafa;
+  border: 1px solid #ebebeb;
+  box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 1px 0px,
+    rgba(0, 0, 0, 0.09804) 0px 1px 2px 0px;
+}
+
+.profilePage .title {
+  color: grey;
+  font-size: 18px;
+}
+
+.profilePage button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.profilePage a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+.profilePage button:hover,
+a:hover {
+  opacity: 0.7;
+}

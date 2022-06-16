@@ -38,31 +38,43 @@ export default function NewSet({ exerciseId, exerciseSessionId }) {
 
   return (
     <div className="newSet">
-      <h3>New Set</h3>
-
       <form onSubmit={handleSubmit}>
-        <label>Set Rest minutes</label>
-        <input
-          type="number"
-          name="mins"
-          value={mins}
-          onChange={(e) => {
-            setMins(e.target.value);
-            restFormat(e.target.value, secs);
-          }}
-        />
+        <h2>New Set</h2>
+        <div className="group">
+          <input
+            type="number"
+            name="mins"
+            value={mins}
+            onChange={(e) => {
+              setMins(e.target.value);
+              restFormat(e.target.value, secs);
+            }}
+          />
+          <span className="highlight"></span>
+          <span className="bar"></span>
+          <label>Rest minutes</label>
+        </div>
 
-        <label>Set Rest seconds</label>
-        <input
-          type="number"
-          name="secs"
-          value={secs}
-          onChange={(e) => {
-            setSecs(e.target.value);
-            restFormat(mins, e.target.value);
-          }}
-        />
-        <button type="submit">Add Set</button>
+        <div className="group">
+          <input
+            type="number"
+            name="secs"
+            value={secs}
+            onChange={(e) => {
+              setSecs(e.target.value);
+              restFormat(mins, e.target.value);
+            }}
+          />
+          <span className="highlight"></span>
+          <span className="bar"></span>
+          <label>Rest seconds</label>
+        </div>
+        <button type="submit" className="button buttonBlue">
+          Add set
+          <div className="ripples buttonRipples">
+            <span className="ripplesCircle"></span>
+          </div>
+        </button>
       </form>
     </div>
   );

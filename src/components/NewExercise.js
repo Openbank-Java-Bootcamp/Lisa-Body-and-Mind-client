@@ -46,22 +46,29 @@ export default function NewExercise({ workoutId }) {
   ) : (
     <div className="newExercise">
       <form onSubmit={handleSubmit}>
-        <label>Select exercise type:</label>
-        <select
-          name="exerciseTypeId"
-          value={exerciseTypeId}
-          onChange={(e) => setExerciseTypeId(e.target.value)}
-        >
-          <option hidden defaultValue>
-            Select one...
-          </option>
-          {exerciseTypeList.map((exerciseType) => (
-            <option value={exerciseType.id} key={exerciseType.id}>
-              {exerciseType.name}
+        <div className="group">
+          <select
+            name="exerciseTypeId"
+            value={exerciseTypeId}
+            onChange={(e) => setExerciseTypeId(e.target.value)}
+          >
+            <option hidden defaultValue>
+              Select one...
             </option>
-          ))}
-        </select>
-        <button type="submit">Add Exercise</button>
+            {exerciseTypeList.map((exerciseType) => (
+              <option value={exerciseType.id} key={exerciseType.id}>
+                {exerciseType.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <label>Select exercise type:</label>
+        <button type="submit" className="button buttonBlue">
+          Add exercise
+          <div className="ripples buttonRipples">
+            <span className="ripplesCircle"></span>
+          </div>
+        </button>
       </form>
     </div>
   );

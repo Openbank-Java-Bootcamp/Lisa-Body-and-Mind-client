@@ -5,7 +5,7 @@ import { NewRep } from "../components/exportedComponents";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Button } from "antd";
 
-export default function RepDetails({ set }) {
+export default function RepDetails({ set, index }) {
   const [reps, setReps] = useState(null);
   const [hasReps, setHasReps] = useState(true);
   const [repsCreatedByUser, setRepsCreatedByUser] = useState(true);
@@ -49,7 +49,9 @@ export default function RepDetails({ set }) {
   return !hasReps ? (
     <>
       <h1>This Set has no Reps yet. Add some!</h1>
-      {set.exercise.workout.creator === "USER" && <NewRep setId={set.id} />}
+      {set.exercise.workout.creator === "USER" && (
+        <NewRep set={set} index={index} />
+      )}
     </>
   ) : reps === null ? (
     <h1>Loading Reps...</h1>
