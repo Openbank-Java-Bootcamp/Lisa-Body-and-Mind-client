@@ -12,22 +12,27 @@ export default function NavBar() {
   }
 
   return (
-    <nav className="Navbar">
+    <nav className="navbar">
       <Link to="/">
-        <button>Home</button>
+        <button class="button-52" role="button">
+          <span class="material-symbols-outlined">gite</span>
+        </button>
       </Link>
 
       {isAuthenticated ? (
         <>
           <Link to="/programs">
-            <button>Programs</button>
-          </Link>
-
-          <Link to="/profile">
-            <button>Profile</button>
+            <button class="button-52" role="button">
+              Programs
+            </button>
           </Link>
 
           <LogoutButton />
+          <Link to="/profile">
+            <button class="button-52" role="button">
+              <span class="material-symbols-outlined">person</span>
+            </button>
+          </Link>
         </>
       ) : (
         <LoginButton />

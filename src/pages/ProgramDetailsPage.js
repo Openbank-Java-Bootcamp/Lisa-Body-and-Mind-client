@@ -36,10 +36,10 @@ export default function ProgramDetailsPage() {
 
   const deleteProgram = () => {
     axios
-    .delete(`${API_URL}/api/programs/delete/${programId}`)
-    .then(() => navigate("/programs"))
-    .catch((error) => console.error(error)); 
-  }
+      .delete(`${API_URL}/api/programs/delete/${programId}`)
+      .then(() => navigate("/programs"))
+      .catch((error) => console.error(error));
+  };
 
   return program === null || userId === null ? (
     <h1>Loading...</h1>
@@ -49,8 +49,18 @@ export default function ProgramDetailsPage() {
 
       {program.userId === userId && (
         <>
-          <Link to={`/programs/edit/${program.id}`}>Edit Program</Link>
-          <button onClick={() => deleteProgram()}>Delete Program</button>
+          <Link to={`/programs/edit/${program.id}`}>
+            <button class="button-52 edit" role="button">
+              <span class="material-symbols-outlined">edit</span>
+            </button>
+          </Link>
+          <button
+            class="button-52 delete"
+            role="button"
+            onClick={() => deleteProgram()}
+          >
+            <span class="material-symbols-outlined">delete</span>
+          </button>
         </>
       )}
 

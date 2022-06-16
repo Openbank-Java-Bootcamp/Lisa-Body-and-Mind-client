@@ -1,0 +1,13 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar a {
+  margin: 15px;
+}
+
+.logout:after {
+  background-color: #ec793186;
+}

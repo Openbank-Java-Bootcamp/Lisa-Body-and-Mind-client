@@ -36,10 +36,10 @@ export default function WorkoutDetailsPage() {
 
   const deleteWorkout = () => {
     axios
-    .delete(`${API_URL}/api/workouts/delete/${workoutId}`)
-    .then(() => navigate(`/programs/${workout?.program.id}`))
-    .catch((error) => console.error(error)); 
-  }
+      .delete(`${API_URL}/api/workouts/delete/${workoutId}`)
+      .then(() => navigate(`/programs/${workout?.program.id}`))
+      .catch((error) => console.error(error));
+  };
 
   return workout === null || userId === null ? (
     <h1>Loading...</h1>
@@ -49,8 +49,18 @@ export default function WorkoutDetailsPage() {
 
       {workout.userId === userId && (
         <>
-          <Link to={`/workouts/edit/${workoutId}`}>Edit Workout</Link>
-          <button onClick={() => deleteWorkout()}>Delete Workout</button>
+          <Link to={`/workouts/edit/${workoutId}`}>
+            <button class="button-52 edit" role="button">
+              <span class="material-symbols-outlined">edit</span>
+            </button>
+          </Link>
+          <button
+            class="button-52 delete"
+            role="button"
+            onClick={() => deleteWorkout()}
+          >
+            <span class="material-symbols-outlined">delete</span>
+          </button>
         </>
       )}
 

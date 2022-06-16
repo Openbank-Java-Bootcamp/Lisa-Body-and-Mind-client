@@ -62,7 +62,6 @@ export default function NewExercise({ workoutId }) {
             ))}
           </select>
         </div>
-        <label>Select exercise type:</label>
         <button type="submit" className="button buttonBlue">
           Add exercise
           <div className="ripples buttonRipples">

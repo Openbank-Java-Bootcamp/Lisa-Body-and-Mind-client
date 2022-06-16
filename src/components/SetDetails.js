@@ -39,14 +39,23 @@ export default function SetDetails({ set, index }) {
     <h1>Loading...</h1>
   ) : (
     <div className="setDetails">
-      
       <p>
         <strong>Set {index + 1}</strong>
       </p>
       {set.exercise.workout.userId === userId && (
         <>
-          <Link to={`/sets/edit/${set.id}`}>Edit Set</Link>
-          <button onClick={() => deleteSet()}>Delete Set</button>
+          <Link to={`/sets/edit/${set.id}`}>
+            <button class="button-52 edit" role="button">
+              <span class="material-symbols-outlined">edit</span>
+            </button>
+          </Link>
+          <button
+            class="button-52 delete"
+            role="button"
+            onClick={() => deleteSet()}
+          >
+            <span class="material-symbols-outlined">delete</span>
+          </button>
         </>
       )}
       <p>Rest: {set.rest.slice(3)} mins</p>

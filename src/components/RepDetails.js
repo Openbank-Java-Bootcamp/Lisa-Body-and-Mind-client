@@ -55,15 +55,14 @@ export default function RepDetails({ set, index }) {
     <h1>Loading Reps...</h1>
   ) : (
     <div>
-      <p>{reps.length} Reps</p>
+      <p>
+        {repsCreatedByUser && <button onClick={() => deleteRep()}>x</button>}{" "}
+        {reps.length} Reps
+      </p>
+
       <p>
         {reps[0].weight} {reps[0].weightSystem.toLowerCase()}
       </p>
-      {/* THIS IS FOR THE EDIT NOT CREATE 
-      {repsCreatedByUser && <NewRep set.id={set.id} />} */}{" "}
-      {repsCreatedByUser && (
-        <button onClick={() => deleteRep()}>Delete Rep</button>
-      )}
     </div>
   );
 }

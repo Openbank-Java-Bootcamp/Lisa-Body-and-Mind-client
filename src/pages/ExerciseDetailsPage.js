@@ -66,8 +66,18 @@ export default function ExerciseDetailsPage() {
 
           {exercise.workout.userId === userId && (
             <>
-              <Link to={`/exercises/edit/${exerciseId}`}>Edit Exercise</Link>
-              <button onClick={() => deleteExercise()}>Delete Exercise</button>
+              <Link to={`/exercises/edit/${exerciseId}`}>
+                <button class="button-52 edit" role="button">
+                  <span class="material-symbols-outlined">edit</span>
+                </button>
+              </Link>
+              <button
+                class="button-52 delete"
+                role="button"
+                onClick={() => deleteExercise()}
+              >
+                <span class="material-symbols-outlined">delete</span>
+              </button>
             </>
           )}
 
