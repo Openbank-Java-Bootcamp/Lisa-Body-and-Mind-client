@@ -5,7 +5,7 @@ form {
   width: 100%;
   min-width: 200px;
   max-width: 340px;
-  margin: 4em auto;
+  margin: 4em auto 1em;
   padding: 2em 2em 1em 2em;
   background: #f0dabab5;
   border: 1px solid #ebebeb;
@@ -135,7 +135,7 @@ input:focus ~ .highlight {
   from {
     background: #8e3361;
 
-  /* background: #7d1d42; */
+    /* background: #7d1d42; */
   }
   to {
     width: 0;

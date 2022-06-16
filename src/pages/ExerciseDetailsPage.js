@@ -104,13 +104,11 @@ export default function ExerciseDetailsPage() {
           </p>
         </div>
       </div>
-      <div className="row">
+      <div className="cardContainer">
         <SetList exerciseId={exerciseId} />
       </div>
       {exercise.workout.userId === userId && (
-        <div className="row">
-          <NewSet exerciseId={exerciseId} exerciseSessionId="null" />
-        </div>
+        <NewSet exerciseId={exerciseId} exerciseSessionId="null" />
       )}
     </div>
   );

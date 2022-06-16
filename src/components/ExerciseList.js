@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config";
+import { NoDataMessage } from "./exportedComponents";
 
 export default function ExerciseList({ workoutId }) {
   const [exercises, setExercises] = useState(null);
@@ -22,7 +23,7 @@ export default function ExerciseList({ workoutId }) {
   }, []);
 
   return !hasExercises ? (
-    <h1>This Workout has no Exercises yet. Add some!</h1>
+    <NoDataMessage parent="Workout" child="Exercises" />
   ) : exercises === null ? (
     <h1>Loading Exercises...</h1>
   ) : (

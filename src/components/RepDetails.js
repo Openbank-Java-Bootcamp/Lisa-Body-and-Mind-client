@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { API_URL } from "../config";
 import { NewRep } from "../components/exportedComponents";
+import { NoDataMessage } from "./exportedComponents";
 
 export default function RepDetails({ set, index }) {
   const [reps, setReps] = useState(null);
@@ -46,7 +47,7 @@ export default function RepDetails({ set, index }) {
 
   return !hasReps ? (
     <>
-      <h1>This Set has no Reps yet. Add some!</h1>
+      <NoDataMessage parent="Set" child="Reps" />
       {set.exercise.workout.creator === "USER" && (
         <NewRep set={set} index={index} />
       )}

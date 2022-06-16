@@ -36,51 +36,53 @@ export default function NewRep({ set, index }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="newRep">
-      <h2>New Reps for Set {index}</h2>
-      <div className="group">
-        <input
-          type="number"
-          name="repNumber"
-          value={repNumber}
-          onChange={(e) => {
-            setRepNumber(e.target.value);
-          }}
-        />
-        <span className="highlight"></span>
-        <span className="bar"></span>
-        <label>Number of reps</label>
-      </div>
-
-      <div className="group">
-        <input
-          type="number"
-          name="weight"
-          value={weight}
-          onChange={(e) => setWeight(e.target.value)}
-        />
-        <span className="highlight"></span>
-        <span className="bar"></span>
-        <label>Weight</label>
-      </div>
-
-      <select
-        name="weightSystem"
-        value={weightSystem}
-        onChange={(e) => setWeightSystem(e.target.value)}
-      >
-        <option hidden defaultValue>
-          Select weight system
-        </option>
-        <option value={"KG"}>kg</option>
-        <option value={"LBS"}>lbs</option>
-      </select>
-      <button type="submit" className="button buttonBlue">
-        Add reps
-        <div className="ripples buttonRipples">
-          <span className="ripplesCircle"></span>
+    <div>
+      <form onSubmit={handleSubmit} className="newRep">
+        <h2>New Reps for Set {index}</h2>
+        <div className="group">
+          <input
+            type="number"
+            name="repNumber"
+            value={repNumber}
+            onChange={(e) => {
+              setRepNumber(e.target.value);
+            }}
+          />
+          <span className="highlight"></span>
+          <span className="bar"></span>
+          <label>Number of reps</label>
         </div>
-      </button>
-    </form>
+
+        <div className="group">
+          <input
+            type="number"
+            name="weight"
+            value={weight}
+            onChange={(e) => setWeight(e.target.value)}
+          />
+          <span className="highlight"></span>
+          <span className="bar"></span>
+          <label>Weight</label>
+        </div>
+
+        <select
+          name="weightSystem"
+          value={weightSystem}
+          onChange={(e) => setWeightSystem(e.target.value)}
+        >
+          <option hidden defaultValue>
+            Select weight system
+          </option>
+          <option value={"KG"}>kg</option>
+          <option value={"LBS"}>lbs</option>
+        </select>
+        <button type="submit" className="button buttonBlue">
+          Add reps
+          <div className="ripples buttonRipples">
+            <span className="ripplesCircle"></span>
+          </div>
+        </button>
+      </form>
+    </div>
   );
 }

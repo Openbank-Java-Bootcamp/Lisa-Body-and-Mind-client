@@ -14,3 +14,17 @@
   width: 100%;
   max-width: 50%;
 }
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.setDetails{
+  margin: 10px;
+  padding: 0 20px ;
+  background-color: rgba(215, 220, 220, 0.335);
+  border-radius: 30px;
+}

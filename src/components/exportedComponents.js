@@ -10,6 +10,7 @@ import NewWorkout from "./NewWorkout";
 import NewExercise from "./NewExercise";
 import NewSet from "./NewSet";
 import NewRep from "./NewRep";
+import NoDataMessage from "./NoDataMessage";
 
 export {
   NavBar,
@@ -24,4 +25,5 @@ export {
   NewExercise,
   NewSet,
   NewRep,
+  NoDataMessage,
 };

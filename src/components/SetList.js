@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { API_URL } from "../config";
 import SetDetails from "./SetDetails";
+import { NoDataMessage } from "./exportedComponents";
 
 export default function SetList({ exerciseId }) {
   const [sets, setSets] = useState(null);
@@ -22,17 +23,17 @@ export default function SetList({ exerciseId }) {
   }, []);
 
   return !hasWorkouts ? (
-    <h1>This Exercise has no Sets yet. Add some!</h1>
+    <NoDataMessage parent="Exercise" child="Sets" />
   ) : sets === null || sets.length === 0 ? (
     <h1>Loading Sets...</h1>
   ) : (
     <div className="setList">
       <p>exercise sets: </p>
-      <ul>
+      <div className="cardContainer">
         {sets.map((set, i) => (
           <SetDetails set={set} index={i} key={set.id} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

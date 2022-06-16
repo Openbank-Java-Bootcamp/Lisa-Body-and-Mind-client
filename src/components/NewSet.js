@@ -37,43 +37,45 @@ export default function NewSet({ exerciseId, exerciseSessionId }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="newSet">
-      <h2>New Set</h2>
-      <div className="group">
-        <input
-          type="number"
-          name="mins"
-          value={mins}
-          onChange={(e) => {
-            setMins(e.target.value);
-            restFormat(e.target.value, secs);
-          }}
-        />
-        <span className="highlight"></span>
-        <span className="bar"></span>
-        <label>Rest minutes</label>
-      </div>
-
-      <div className="group">
-        <input
-          type="number"
-          name="secs"
-          value={secs}
-          onChange={(e) => {
-            setSecs(e.target.value);
-            restFormat(mins, e.target.value);
-          }}
-        />
-        <span className="highlight"></span>
-        <span className="bar"></span>
-        <label>Rest seconds</label>
-      </div>
-      <button type="submit" className="button buttonBlue">
-        Add set
-        <div className="ripples buttonRipples">
-          <span className="ripplesCircle"></span>
+    <div>
+      <form onSubmit={handleSubmit} className="newSet">
+        <h2>New Set</h2>
+        <div className="group">
+          <input
+            type="number"
+            name="mins"
+            value={mins}
+            onChange={(e) => {
+              setMins(e.target.value);
+              restFormat(e.target.value, secs);
+            }}
+          />
+          <span className="highlight"></span>
+          <span className="bar"></span>
+          <label>Rest minutes</label>
         </div>
-      </button>
-    </form>
+
+        <div className="group">
+          <input
+            type="number"
+            name="secs"
+            value={secs}
+            onChange={(e) => {
+              setSecs(e.target.value);
+              restFormat(mins, e.target.value);
+            }}
+          />
+          <span className="highlight"></span>
+          <span className="bar"></span>
+          <label>Rest seconds</label>
+        </div>
+        <button type="submit" className="button buttonBlue">
+          Add set
+          <div className="ripples buttonRipples">
+            <span className="ripplesCircle"></span>
+          </div>
+        </button>
+      </form>
+    </div>
   );
 }
