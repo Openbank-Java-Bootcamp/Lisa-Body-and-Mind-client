@@ -17,14 +17,14 @@ export default function ExerciseDetailsPage() {
     axios
       .get(`${API_URL}/api/exercises/${exerciseId}`)
       .then((response) => setExercise(response.data))
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   const getUserIdByEmail = () => {
     axios
       .get(`${API_URL}/api/users/email/${user?.email}`)
       .then((response) => setUserId(response.data.id))
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -36,10 +36,10 @@ export default function ExerciseDetailsPage() {
     axios
       .delete(`${API_URL}/api/exercises/delete/${exerciseId}`)
       .then(() => navigate(`/workouts/${exercise?.workout.id}`))
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
-  return exercise === null || userId === null ? (
+  return exercise === null ? (
     <h1>Loading...</h1>
   ) : (
     <div className="exerciseDetails details">
@@ -61,22 +61,24 @@ export default function ExerciseDetailsPage() {
         <div className="col">
           <h3>{exercise.exerciseType.name}</h3>
 
-          {exercise.workout.userId === userId && (
-            <>
-              <Link to={`/exercises/edit/${exerciseId}`}>
-                <button className="buttonBox edit" role="button">
-                  <span className="material-symbols-outlined">edit</span>
+          {userId != null &&
+            exercise.workout.userId === userId &&
+            exercise.workout.creator != "TRAINER" && (
+              <>
+                <Link to={`/exercises/edit/${exerciseId}`}>
+                  <button className="buttonBox edit" role="button">
+                    <span className="material-symbols-outlined">edit</span>
+                  </button>
+                </Link>
+                <button
+                  className="buttonBox delete"
+                  role="button"
+                  onClick={() => deleteExercise()}
+                >
+                  <span className="material-symbols-outlined">delete</span>
                 </button>
-              </Link>
-              <button
-                className="buttonBox delete"
-                role="button"
-                onClick={() => deleteExercise()}
-              >
-                <span className="material-symbols-outlined">delete</span>
-              </button>
-            </>
-          )}
+              </>
+            )}
           <p>
             From <strong>{exercise.workout.name}</strong> Workout &{" "}
             <strong>{exercise.workout.program.name}</strong> Program
@@ -107,9 +109,11 @@ export default function ExerciseDetailsPage() {
       <div className="cardContainer">
         <SetList exerciseId={exerciseId} />
       </div>
-      {exercise.workout.userId === userId && (
-        <NewSet exerciseId={exerciseId} exerciseSessionId="null" />
-      )}
+      {userId != null &&
+        exercise.workout.userId === userId &&
+        exercise.workout.creator != "TRAINER" && (
+          <NewSet exerciseId={exerciseId} exerciseSessionId="null" />
+        )}
     </div>
   );
 }

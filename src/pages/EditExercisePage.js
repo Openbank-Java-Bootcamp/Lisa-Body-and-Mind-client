@@ -17,14 +17,14 @@ export default function EditExercisePage() {
         setWorkoutId(response.data.workout.id);
         setExerciseTypeId(response.data.exerciseType.id);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   const getAllExerciseTypes = () => {
     axios
       .get(`${API_URL}/api/exercise-types`)
       .then((response) => setExerciseTypeList(response.data))
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function EditExercisePage() {
         setExerciseTypeId(0);
         navigate(`/exercises/${exerciseId}`);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   return workoutId === 0 ||

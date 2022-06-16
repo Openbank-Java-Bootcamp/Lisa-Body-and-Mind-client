@@ -24,7 +24,7 @@ export default function CreateProgramPage() {
       // })
       .get(`${API_URL}/api/users/email/${user?.email}`)
       .then((response) => setUserId(response.data.id))
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export default function CreateProgramPage() {
         setCreator("USER");
         refreshPage();
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
     navigate("/programs");
   };
 

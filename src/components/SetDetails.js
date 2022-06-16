@@ -15,12 +15,9 @@ export default function SetDetails({ set, index }) {
 
   const getUserIdByEmail = () => {
     axios
-      // .get(`${API_URL}/api/users/email/${user?.email}`, {
-      //   headers: { Authorization: `Bearer ${storedToken}` },
-      // })
       .get(`${API_URL}/api/users/email/${user?.email}`)
       .then((response) => setUserId(response.data.id))
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -31,7 +28,7 @@ export default function SetDetails({ set, index }) {
     axios
       .delete(`${API_URL}/api/sets/delete/${set.id}`)
       .then(() => refreshPage())
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   return set === null ? (
@@ -41,22 +38,23 @@ export default function SetDetails({ set, index }) {
       <p>
         <strong>
           Set {index + 1}{" "}
-          {set.exercise.workout.userId === userId && (
-            <>
-              <Link to={`/sets/edit/${set.id}`}>
-                <button className="buttonBox edit" role="button">
-                  <span className="material-symbols-outlined">edit</span>
+          {set.exercise.workout.userId === userId &&
+            set.exercise.workout.creator != "TRAINER" && (
+              <>
+                <Link to={`/sets/edit/${set.id}`}>
+                  <button className="buttonBox edit" role="button">
+                    <span className="material-symbols-outlined">edit</span>
+                  </button>
+                </Link>
+                <button
+                  className="buttonBox delete"
+                  role="button"
+                  onClick={() => deleteSet()}
+                >
+                  <span className="material-symbols-outlined">delete</span>
                 </button>
-              </Link>
-              <button
-                className="buttonBox delete"
-                role="button"
-                onClick={() => deleteSet()}
-              >
-                <span className="material-symbols-outlined">delete</span>
-              </button>
-            </>
-          )}
+              </>
+            )}
         </strong>
       </p>
 

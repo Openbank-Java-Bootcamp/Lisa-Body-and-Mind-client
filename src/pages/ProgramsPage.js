@@ -16,7 +16,7 @@ export default function ProgramsPage() {
     axios
       .get(`${API_URL}/api/programs/creator/trainer`)
       .then((response) => setPrograms(response.data))
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   const getUserPrograms = () => {
@@ -26,7 +26,7 @@ export default function ProgramsPage() {
         axios.get(`${API_URL}/api/programs/user/${response.data?.id}`)
       )
       .then((response) => setUserPrograms(response.data))
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {

@@ -31,7 +31,7 @@ export default function EditSetPage() {
         restToMinsSecs(response.data.rest);
         setExerciseId(response.data.exercise.id);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function EditSetPage() {
         setExerciseId(0);
         navigate(`/exercises/${exerciseId}`);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   return (

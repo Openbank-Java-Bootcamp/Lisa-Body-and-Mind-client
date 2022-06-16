@@ -29,7 +29,7 @@ export default function RepDetails({ set, index }) {
         areRepsCreatedByUser(response.data);
       })
       .catch((error) => {
-        console.error(error);
+        console.log(error);
         setHasReps(false);
       });
   };
@@ -42,7 +42,7 @@ export default function RepDetails({ set, index }) {
     axios
       .delete(`${API_URL}/api/repetitions/delete/set/${set.id}`)
       .then(() => refreshPage())
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   return !hasReps ? (

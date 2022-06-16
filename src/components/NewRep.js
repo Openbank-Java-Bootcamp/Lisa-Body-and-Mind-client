@@ -30,7 +30,7 @@ export default function NewRep({ set, index }) {
             setWeightSystem("");
             refreshPage();
           })
-          .catch((error) => console.error(error));
+          .catch((error) => console.log(error));
       }
     }
   };

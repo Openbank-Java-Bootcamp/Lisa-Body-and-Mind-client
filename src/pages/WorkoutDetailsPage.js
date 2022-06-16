@@ -16,17 +16,14 @@ export default function WorkoutDetailsPage() {
     axios
       .get(`${API_URL}/api/workouts/${workoutId}`)
       .then((response) => setWorkout(response.data))
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   const getUserIdByEmail = () => {
     axios
-      // .get(`${API_URL}/api/users/email/${user?.email}`, {
-      //   headers: { Authorization: `Bearer ${storedToken}` },
-      // })
       .get(`${API_URL}/api/users/email/${user?.email}`)
       .then((response) => setUserId(response.data.id))
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -38,31 +35,33 @@ export default function WorkoutDetailsPage() {
     axios
       .delete(`${API_URL}/api/workouts/delete/${workoutId}`)
       .then(() => navigate(`/programs/${workout?.program.id}`))
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
-  return workout === null || userId === null ? (
+  return workout === null ? (
     <h1>Loading...</h1>
   ) : (
     <div className="workoutDetails details">
       <h3>
         {workout.name}{" "}
-        {workout.userId === userId && (
-          <>
-            <Link to={`/workouts/edit/${workoutId}`}>
-              <button className="buttonBox edit" role="button">
-                <span className="material-symbols-outlined">edit</span>
+        {userId === null &&
+          workout.userId === userId &&
+          workout.creator != "TRAINER" && (
+            <>
+              <Link to={`/workouts/edit/${workoutId}`}>
+                <button className="buttonBox edit" role="button">
+                  <span className="material-symbols-outlined">edit</span>
+                </button>
+              </Link>
+              <button
+                className="buttonBox delete"
+                role="button"
+                onClick={() => deleteWorkout()}
+              >
+                <span className="material-symbols-outlined">delete</span>
               </button>
-            </Link>
-            <button
-              className="buttonBox delete"
-              role="button"
-              onClick={() => deleteWorkout()}
-            >
-              <span className="material-symbols-outlined">delete</span>
-            </button>
-          </>
-        )}
+            </>
+          )}
       </h3>
 
       <p>
@@ -77,7 +76,9 @@ export default function WorkoutDetailsPage() {
 
       <ExerciseList workoutId={workoutId} />
 
-      {workout.userId === userId && <NewExercise workoutId={workoutId} />}
+      {userId === null &&
+        workout.userId === userId &&
+        workout.creator != "TRAINER" && <NewExercise workoutId={workoutId} />}
     </div>
   );
 }

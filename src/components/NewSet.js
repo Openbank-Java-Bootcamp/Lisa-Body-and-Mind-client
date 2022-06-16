@@ -33,7 +33,7 @@ export default function NewSet({ exerciseId, exerciseSessionId }) {
         setSecs(0);
         refreshPage();
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   return (

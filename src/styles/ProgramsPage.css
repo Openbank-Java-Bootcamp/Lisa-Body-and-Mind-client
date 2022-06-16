@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 4em auto;
-  padding: 2em 2em 1em 2em;
+  margin: 2em auto;
+  padding: 0 2em 1em 2em;
 }
 
 .programsPage img {
@@ -14,7 +14,7 @@
 }
 
 .programsList {
-  font-size: 28px;
+  font-size: 25px;
 }
 
 .programsList a {

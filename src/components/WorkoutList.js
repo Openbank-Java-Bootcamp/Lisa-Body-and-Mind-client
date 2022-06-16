@@ -13,7 +13,7 @@ export default function WorkoutList({ programId }) {
       .get(`${API_URL}/api/workouts/program/${programId}`)
       .then((response) => setWorkouts(response.data))
       .catch((error) => {
-        console.error(error);
+        console.log(error);
         setHasWorkouts(false);
       });
   };

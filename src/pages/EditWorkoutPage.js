@@ -20,7 +20,7 @@ export default function EditWorkoutPage() {
         setUserId(response.data.userId);
         setProgramId(response.data.program.id);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function EditWorkoutPage() {
         setProgramId(0);
         navigate(`/workouts/${workoutId}`);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   return userId === 0 || programId === 0 ? (
@@ -53,12 +53,12 @@ export default function EditWorkoutPage() {
     <form onSubmit={handleSubmit} className="editWorkoutPage">
       <h2>Edit Workout</h2>
       <div className="group">
-      <input
-        type="text"
-        name="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+        <input
+          type="text"
+          name="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
         <span className="highlight"></span>
         <span className="bar"></span>
         <label>Program name</label>

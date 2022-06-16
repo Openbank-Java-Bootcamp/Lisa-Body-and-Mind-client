@@ -17,7 +17,7 @@ export default function ProgramDetailsPage() {
     axios
       .get(`${API_URL}/api/programs/${programId}`)
       .then((response) => setProgram(response.data))
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   const getUserIdByEmail = () => {
@@ -27,7 +27,7 @@ export default function ProgramDetailsPage() {
       // })
       .get(`${API_URL}/api/users/email/${user?.email}`)
       .then((response) => setUserId(response.data.id))
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -39,16 +39,16 @@ export default function ProgramDetailsPage() {
     axios
       .delete(`${API_URL}/api/programs/delete/${programId}`)
       .then(() => navigate("/programs"))
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
-  return program === null || userId === null ? (
+  return program === null ? (
     <h1>Loading...</h1>
   ) : (
     <div className="programDetails details">
       <h3>
         {program.name}{" "}
-        {program.userId === userId && (
+        {program.userId === userId && program.creator !== "TRAINER" && (
           <>
             <Link to={`/programs/edit/${program.id}`}>
               <button className="buttonBox edit" role="button">
@@ -74,7 +74,9 @@ export default function ProgramDetailsPage() {
 
       <WorkoutList programId={program.id} />
 
-      {program.userId === userId && <NewWorkout programId={program.id} />}
+      {userId === null &&
+        program.userId === userId &&
+        program.creator !== "TRAINER" && <NewWorkout programId={program.id} />}
     </div>
   );
 }

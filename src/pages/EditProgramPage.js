@@ -18,7 +18,7 @@ export default function EditProgramPage() {
         setCreator(response.data.creator);
         setUserId(response.data.userId);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {

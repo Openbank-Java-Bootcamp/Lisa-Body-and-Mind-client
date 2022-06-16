@@ -10,7 +10,7 @@ export default function NewExercise({ workoutId }) {
     axios
       .get(`${API_URL}/api/exercise-types`)
       .then((response) => setExerciseTypeList(response.data))
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function NewExercise({ workoutId }) {
         setExerciseTypeId(0);
         refreshPage();
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   return exerciseTypeList === null || exerciseTypeList.length === 0 ? (

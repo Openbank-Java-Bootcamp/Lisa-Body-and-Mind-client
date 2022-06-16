@@ -21,7 +21,7 @@ export default function NewWorkout({ programId }) {
       // })
       .get(`${API_URL}/api/users/email/${user?.email}`)
       .then((response) => setUserId(response.data.id))
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function NewWorkout({ programId }) {
         setCreator("USER");
         refreshPage();
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
   };
 
   if (isLoading) {
