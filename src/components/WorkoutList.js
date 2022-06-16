@@ -26,8 +26,8 @@ export default function WorkoutList({ programId }) {
   ) : workouts === null || workouts.length === 0 ? (
     <h1>Loading Workouts...</h1>
   ) : (
-    <div className="workoutsList">
-      <p>Workouts: </p>
+    <div className="workoutsList list">
+      <p>workouts: </p>
       <ul>
         {workouts.map((workout) => (
           <li key={workout.id}>

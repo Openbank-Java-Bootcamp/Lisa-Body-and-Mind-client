@@ -22,9 +22,6 @@ export default function ExerciseDetailsPage() {
 
   const getUserIdByEmail = () => {
     axios
-      // .get(`${API_URL}/api/users/email/${user?.email}`, {
-      //   headers: { Authorization: `Bearer ${storedToken}` },
-      // })
       .get(`${API_URL}/api/users/email/${user?.email}`)
       .then((response) => setUserId(response.data.id))
       .catch((error) => console.error(error));
@@ -45,9 +42,9 @@ export default function ExerciseDetailsPage() {
   return exercise === null || userId === null ? (
     <h1>Loading...</h1>
   ) : (
-    <div className="exerciseDetails">
+    <div className="exerciseDetails details">
       <div className="row">
-        <div>
+        <>
           {exercise.exerciseType.image !== "" ? (
             <img
               src={exercise.exerciseType.image}
@@ -59,7 +56,7 @@ export default function ExerciseDetailsPage() {
               alt="Cat Exercising"
             />
           )}
-        </div>
+        </>
 
         <div className="col">
           <h3>{exercise.exerciseType.name}</h3>
@@ -67,37 +64,43 @@ export default function ExerciseDetailsPage() {
           {exercise.workout.userId === userId && (
             <>
               <Link to={`/exercises/edit/${exerciseId}`}>
-                <button class="button-52 edit" role="button">
-                  <span class="material-symbols-outlined">edit</span>
+                <button className="button-52 edit" role="button">
+                  <span className="material-symbols-outlined">edit</span>
                 </button>
               </Link>
               <button
-                class="button-52 delete"
+                className="button-52 delete"
                 role="button"
                 onClick={() => deleteExercise()}
               >
-                <span class="material-symbols-outlined">delete</span>
+                <span className="material-symbols-outlined">delete</span>
               </button>
             </>
           )}
-
           <p>
-            From <strong>{exercise.workout.program.name}</strong> Program
+            From <strong>{exercise.workout.name}</strong> Workout & <strong>{exercise.workout.program.name}</strong> Program
           </p>
 
           <p>
-            From <strong>{exercise.workout.name}</strong> Workout
+            Difficulty:{" "}
+            <strong>{exercise.exerciseType.difficulty.toLowerCase()}</strong>
           </p>
 
-          <p>Difficulty: {exercise.exerciseType.difficulty.toLowerCase()}</p>
+          <p>
+            Equipment: <strong>{exercise.exerciseType.equipment}</strong>
+          </p>
 
-          <p>Equipment: {exercise.exerciseType.equipment}</p>
+          <p>
+            Muscle: <strong>{exercise.exerciseType.muscle}</strong>
+          </p>
 
-          <p>Muscle: {exercise.exerciseType.muscle}</p>
+          <p>
+            Type: <strong>{exercise.exerciseType.type.toLowerCase()}</strong>
+          </p>
 
-          <p>Type: {exercise.exerciseType.type.toLowerCase()}</p>
-
-          <p>Instructions: {exercise.exerciseType.instructions}</p>
+          <p>
+            <strong>Instructions:</strong> {exercise.exerciseType.instructions}
+          </p>
         </div>
       </div>
       <div className="row">

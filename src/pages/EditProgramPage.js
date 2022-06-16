@@ -43,9 +43,10 @@ export default function EditProgramPage() {
       });
   };
 
-  return name === "" ? (
-    <h1>Loading...</h1>
-  ) : (
+  // return name === "" ? (
+  //   <h1>Loading...</h1>
+  // ) :
+  return (
     <div className="editProgramPage">
       <form onSubmit={handleSubmit}>
         <label>Name:</label>

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { LoginButton } from "../auth/exportedAuth";
 import { NewUser } from "../components/exportedComponents";
 import image from "../assets/body&mind2.png";
 import image2 from "../assets/asset1.png";
@@ -41,8 +40,6 @@ export default function HomePage() {
     <div className="loggedOutHomePage">
       <h1>Body&Mind</h1>
       <img src={image} alt="Woman Doing a Yoga Pose" />
-      {/* <p>Please Log In</p>
-      <LoginButton /> */}
       <p>
         <i>Take care of your mind taking care of your body.</i>
       </p>

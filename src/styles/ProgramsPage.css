@@ -1,0 +1,50 @@
+.programsPage > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4em auto;
+  padding: 2em 2em 1em 2em;
+}
+
+.programsPage img {
+  width: 100%;
+  max-width: 90px;
+  height: auto;
+  margin: 40px;
+}
+
+.programsList {
+  font-size: 28px;
+}
+
+.programsList a {
+  border-radius: 4px;
+  border: none;
+  text-align: center;
+  padding: 6px;
+  transition: all 0.5s;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  text-transform: capitalize;
+}
+
+.programsList a:after {
+  content: " »";
+  opacity: 0;
+  color: rgb(177, 100, 28);
+  top: 14px;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.programsList a:hover {
+  padding-right: 24px;
+  padding-left: 8px;
+}
+
+.programsList a:hover:after {
+  opacity: 1;
+  right: 10px;
+}

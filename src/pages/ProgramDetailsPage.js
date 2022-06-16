@@ -4,6 +4,7 @@ import axios from "axios";
 import { API_URL } from "../config";
 import { WorkoutList, NewWorkout } from "../components/exportedComponents";
 import { useAuth0 } from "@auth0/auth0-react";
+import "../styles/DetailsPageWithList.css";
 
 export default function ProgramDetailsPage() {
   const [program, setProgram] = useState(null);
@@ -44,25 +45,26 @@ export default function ProgramDetailsPage() {
   return program === null || userId === null ? (
     <h1>Loading...</h1>
   ) : (
-    <div className="programDetails">
-      <h3>{program.name}</h3>
-
-      {program.userId === userId && (
-        <>
-          <Link to={`/programs/edit/${program.id}`}>
-            <button class="button-52 edit" role="button">
-              <span class="material-symbols-outlined">edit</span>
+    <div className="programDetails details">
+      <h3>
+        {program.name}{" "}
+        {program.userId === userId && (
+          <>
+            <Link to={`/programs/edit/${program.id}`}>
+              <button className="button-52 edit" role="button">
+                <span className="material-symbols-outlined">edit</span>
+              </button>
+            </Link>
+            <button
+              className="button-52 delete"
+              role="button"
+              onClick={() => deleteProgram()}
+            >
+              <span className="material-symbols-outlined">delete</span>
             </button>
-          </Link>
-          <button
-            class="button-52 delete"
-            role="button"
-            onClick={() => deleteProgram()}
-          >
-            <span class="material-symbols-outlined">delete</span>
-          </button>
-        </>
-      )}
+          </>
+        )}
+      </h3>
 
       {program.creator === "TRAINER" && (
         <p>

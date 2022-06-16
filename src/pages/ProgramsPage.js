@@ -3,6 +3,9 @@ import axios from "axios";
 import { API_URL } from "../config";
 import { ProgramList } from "../components/exportedComponents";
 import { useAuth0 } from "@auth0/auth0-react";
+import kettleball from "../assets/kettleball.png";
+import dumbell from "../assets/dumbell.png";
+import "../styles/ProgramsPage.css";
 
 export default function ProgramsPage() {
   const [programs, setPrograms] = useState(null);
@@ -29,6 +32,7 @@ export default function ProgramsPage() {
   useEffect(() => {
     getTrainerPrograms();
     getUserPrograms();
+    console.log(userPrograms !== null);
   }, []);
 
   if (isLoading) {
@@ -38,9 +42,18 @@ export default function ProgramsPage() {
   return programs === null || programs.length === 0 ? (
     <h1>Loading...</h1>
   ) : (
-    <>
-      <ProgramList programs={programs} />
-      {userPrograms !== null && <ProgramList programs={userPrograms} />}
-    </>
+    <div className="programsPage">
+      <div>
+        <ProgramList programs={programs} />
+        <img src={dumbell} alt="Dumbell" />
+      </div>
+      {userPrograms != null && (
+        <div>
+          <img src={kettleball} alt="Kettleball" />
+
+          <ProgramList programs={userPrograms} />
+        </div>
+      )}
+    </div>
   );
 }

@@ -44,25 +44,26 @@ export default function WorkoutDetailsPage() {
   return workout === null || userId === null ? (
     <h1>Loading...</h1>
   ) : (
-    <div className="workoutDetails">
-      <h3>{workout.name}</h3>
-
-      {workout.userId === userId && (
-        <>
-          <Link to={`/workouts/edit/${workoutId}`}>
-            <button class="button-52 edit" role="button">
-              <span class="material-symbols-outlined">edit</span>
+    <div className="workoutDetails details">
+      <h3>
+        {workout.name}{" "}
+        {workout.userId === userId && (
+          <>
+            <Link to={`/workouts/edit/${workoutId}`}>
+              <button className="button-52 edit" role="button">
+                <span className="material-symbols-outlined">edit</span>
+              </button>
+            </Link>
+            <button
+              className="button-52 delete"
+              role="button"
+              onClick={() => deleteWorkout()}
+            >
+              <span className="material-symbols-outlined">delete</span>
             </button>
-          </Link>
-          <button
-            class="button-52 delete"
-            role="button"
-            onClick={() => deleteWorkout()}
-          >
-            <span class="material-symbols-outlined">delete</span>
-          </button>
-        </>
-      )}
+          </>
+        )}
+      </h3>
 
       <p>
         From <strong>{workout.program.name}</strong>

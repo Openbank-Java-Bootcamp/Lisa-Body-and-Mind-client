@@ -14,23 +14,23 @@ export default function NavBar() {
   return (
     <nav className="navbar">
       <Link to="/">
-        <button class="button-52" role="button">
-          <span class="material-symbols-outlined">gite</span>
+        <button className="button-52" role="button">
+          <span className="material-symbols-outlined">gite</span>
         </button>
       </Link>
 
       {isAuthenticated ? (
         <>
           <Link to="/programs">
-            <button class="button-52" role="button">
+            <button className="button-52" role="button">
               Programs
             </button>
           </Link>
 
           <LogoutButton />
           <Link to="/profile">
-            <button class="button-52" role="button">
-              <span class="material-symbols-outlined">person</span>
+            <button className="button-52" role="button">
+              <span className="material-symbols-outlined">person</span>
             </button>
           </Link>
         </>
