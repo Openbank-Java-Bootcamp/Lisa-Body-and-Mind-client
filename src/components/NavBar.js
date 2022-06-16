@@ -14,7 +14,7 @@ export default function NavBar() {
   return (
     <nav className="navbar">
       <Link to="/">
-        <button className="button-52" role="button">
+        <button className="buttonBox" role="button">
           <span className="material-symbols-outlined">gite</span>
         </button>
       </Link>
@@ -22,14 +22,14 @@ export default function NavBar() {
       {isAuthenticated ? (
         <>
           <Link to="/programs">
-            <button className="button-52" role="button">
+            <button className="buttonBox" role="button">
               Programs
             </button>
           </Link>
 
           <LogoutButton />
           <Link to="/profile">
-            <button className="button-52" role="button">
+            <button className="buttonBox" role="button">
               <span className="material-symbols-outlined">person</span>
             </button>
           </Link>

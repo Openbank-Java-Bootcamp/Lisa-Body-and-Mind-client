@@ -44,12 +44,12 @@ export default function SetDetails({ set, index }) {
           {set.exercise.workout.userId === userId && (
             <>
               <Link to={`/sets/edit/${set.id}`}>
-                <button className="button-52 edit" role="button">
+                <button className="buttonBox edit" role="button">
                   <span className="material-symbols-outlined">edit</span>
                 </button>
               </Link>
               <button
-                className="button-52 delete"
+                className="buttonBox delete"
                 role="button"
                 onClick={() => deleteSet()}
               >

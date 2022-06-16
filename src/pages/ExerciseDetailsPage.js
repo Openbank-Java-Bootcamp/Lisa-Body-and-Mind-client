@@ -64,12 +64,12 @@ export default function ExerciseDetailsPage() {
           {exercise.workout.userId === userId && (
             <>
               <Link to={`/exercises/edit/${exerciseId}`}>
-                <button className="button-52 edit" role="button">
+                <button className="buttonBox edit" role="button">
                   <span className="material-symbols-outlined">edit</span>
                 </button>
               </Link>
               <button
-                className="button-52 delete"
+                className="buttonBox delete"
                 role="button"
                 onClick={() => deleteExercise()}
               >
@@ -78,7 +78,8 @@ export default function ExerciseDetailsPage() {
             </>
           )}
           <p>
-            From <strong>{exercise.workout.name}</strong> Workout & <strong>{exercise.workout.program.name}</strong> Program
+            From <strong>{exercise.workout.name}</strong> Workout &{" "}
+            <strong>{exercise.workout.program.name}</strong> Program
           </p>
 
           <p>

@@ -50,18 +50,25 @@ export default function EditWorkoutPage() {
   return userId === 0 || programId === 0 ? (
     <h1>Loading...</h1>
   ) : (
-    <div className="editWorkoutPage">
-      <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-
-        <button type="submit">Update Workout</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className="editWorkoutPage">
+      <h2>Edit Workout</h2>
+      <div className="group">
+      <input
+        type="text"
+        name="name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+        <span className="highlight"></span>
+        <span className="bar"></span>
+        <label>Program name</label>
+      </div>
+      <button type="submit" className="button buttonBlue">
+        Update
+        <div className="ripples buttonRipples">
+          <span className="ripplesCircle"></span>
+        </div>
+      </button>
+    </form>
   );
 }

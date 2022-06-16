@@ -15,9 +15,6 @@ export default function ProfilePage() {
 
   const getUserDetailsByEmail = () => {
     axios
-      // .get(`${API_URL}/api/users/email/${user?.email}`, {
-      //   headers: { Authorization: `Bearer ${storedToken}` },
-      // })
       .get(`${API_URL}/api/users/email/${user?.email}`)
       .then((response) => setUserDetails(response.data))
       .catch((error) => console.error(error));
@@ -36,8 +33,8 @@ export default function ProfilePage() {
           style={{ width: "25%" }}
         />
         <h2>{userDetails.fullName}</h2>
-        <p className="title">{userDetails.username}</p>
-        <p>{userDetails.email}</p>
+        <p className="title">username: <strong>{userDetails.username}</strong></p>
+        <p>email: <strong>{userDetails.email}</strong></p>
         <button>Edit</button>
       </div>
     </div>

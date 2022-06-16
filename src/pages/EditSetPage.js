@@ -60,11 +60,9 @@ export default function EditSetPage() {
   };
 
   return (
-    <div className="editSet">
-      <h3>Edit Set:</h3>
-
-      <form onSubmit={handleSubmit}>
-        <label>Set Rest minutes</label>
+    <form onSubmit={handleSubmit} className="editSet">
+      <h2>Edit Set:</h2>
+      <div className="group">
         <input
           type="number"
           name="mins"
@@ -74,8 +72,12 @@ export default function EditSetPage() {
             restFormat(e.target.value, secs);
           }}
         />
+        <span className="highlight"></span>
+        <span className="bar"></span>
+        <label>Rest minutes</label>
+      </div>
 
-        <label>Set Rest seconds</label>
+      <div className="group">
         <input
           type="number"
           name="secs"
@@ -85,8 +87,16 @@ export default function EditSetPage() {
             restFormat(mins, e.target.value);
           }}
         />
-        <button type="submit">Update Set</button>
-      </form>
-    </div>
+        <span className="highlight"></span>
+        <span className="bar"></span>
+        <label>Rest seconds</label>
+      </div>
+      <button type="submit" className="button buttonBlue">
+        Update
+        <div className="ripples buttonRipples">
+          <span className="ripplesCircle"></span>
+        </div>
+      </button>
+    </form>
   );
 }

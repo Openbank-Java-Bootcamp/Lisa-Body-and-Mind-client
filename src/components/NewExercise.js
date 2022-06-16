@@ -8,9 +8,6 @@ export default function NewExercise({ workoutId }) {
 
   const getAllExerciseTypes = () => {
     axios
-      // .get(`${API_URL}/api/exercise-types`, {
-      //   headers: { Authorization: `Bearer ${storedToken}` },
-      // })
       .get(`${API_URL}/api/exercise-types`)
       .then((response) => setExerciseTypeList(response.data))
       .catch((error) => console.error(error));
@@ -30,9 +27,6 @@ export default function NewExercise({ workoutId }) {
     const requestBody = { exerciseTypeId, workoutId };
 
     axios
-      // .post(`${API_URL}/api/workouts/new`, {
-      //   headers: { Authorization: `Bearer ${storedToken}` }, requestBody
-      // })
       .post(`${API_URL}/api/exercises/new`, requestBody)
       .then((response) => {
         setExerciseTypeId(0);
@@ -44,31 +38,32 @@ export default function NewExercise({ workoutId }) {
   return exerciseTypeList === null || exerciseTypeList.length === 0 ? (
     <h1>Loading...</h1>
   ) : (
-    <div className="newExercise">
-      <form onSubmit={handleSubmit}>
-        <div className="group">
-          <select
-            name="exerciseTypeId"
-            value={exerciseTypeId}
-            onChange={(e) => setExerciseTypeId(e.target.value)}
-          >
-            <option hidden defaultValue>
-              Select one...
+    <form onSubmit={handleSubmit} className="newExercise">
+      <div className="group">
+        <select
+          name="exerciseTypeId"
+          value={exerciseTypeId}
+          onChange={(e) => setExerciseTypeId(e.target.value)}
+        >
+          <option hidden defaultValue>
+            Select one...
+          </option>
+          {exerciseTypeList.map((exerciseType) => (
+            <option value={exerciseType.id} key={exerciseType.id}>
+              {exerciseType.name}
             </option>
-            {exerciseTypeList.map((exerciseType) => (
-              <option value={exerciseType.id} key={exerciseType.id}>
-                {exerciseType.name}
-              </option>
-            ))}
-          </select>
+          ))}
+        </select>
+        <span className="highlight"></span>
+        <span className="bar"></span>
+        <label>Exercise name</label>
+      </div>
+      <button type="submit" className="button buttonBlue">
+        Add exercise
+        <div className="ripples buttonRipples">
+          <span className="ripplesCircle"></span>
         </div>
-        <button type="submit" className="button buttonBlue">
-          Add exercise
-          <div className="ripples buttonRipples">
-            <span className="ripplesCircle"></span>
-          </div>
-        </button>
-      </form>
-    </div>
+      </button>
+    </form>
   );
 }

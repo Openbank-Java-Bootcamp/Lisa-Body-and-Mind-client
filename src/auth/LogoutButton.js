@@ -6,7 +6,7 @@ export default function LogoutButton() {
 
   return (
     <button
-      className="button-52 logout"
+      className="buttonBox logout"
       role="button"
       onClick={() => logout({ returnTo: window.location.origin })}
     >

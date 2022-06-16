@@ -50,12 +50,12 @@ export default function WorkoutDetailsPage() {
         {workout.userId === userId && (
           <>
             <Link to={`/workouts/edit/${workoutId}`}>
-              <button className="button-52 edit" role="button">
+              <button className="buttonBox edit" role="button">
                 <span className="material-symbols-outlined">edit</span>
               </button>
             </Link>
             <button
-              className="button-52 delete"
+              className="buttonBox delete"
               role="button"
               onClick={() => deleteWorkout()}
             >

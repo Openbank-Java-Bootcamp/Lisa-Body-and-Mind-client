@@ -4,11 +4,13 @@
   max-width: 340px;
   margin: 10em auto;
   padding: 2em 2em 1em 2em;
-  background: #fafafa;
+  background: #f0dabab5;
   border: 1px solid #ebebeb;
+  border-radius: 25px;
   box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 1px 0px,
     rgba(0, 0, 0, 0.09804) 0px 1px 2px 0px;
 }
+
 
 .profilePage .title {
   color: grey;
@@ -21,7 +23,7 @@
   display: inline-block;
   padding: 8px;
   color: white;
-  background-color: #000;
+  background-color: rgb(105, 70, 70);
   text-align: center;
   cursor: pointer;
   width: 100%;

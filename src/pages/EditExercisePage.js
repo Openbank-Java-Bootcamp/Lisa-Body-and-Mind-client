@@ -22,9 +22,6 @@ export default function EditExercisePage() {
 
   const getAllExerciseTypes = () => {
     axios
-      // .get(`${API_URL}/api/exercise-types`, {
-      //   headers: { Authorization: `Bearer ${storedToken}` },
-      // })
       .get(`${API_URL}/api/exercise-types`)
       .then((response) => setExerciseTypeList(response.data))
       .catch((error) => console.error(error));
@@ -41,9 +38,6 @@ export default function EditExercisePage() {
     const requestBody = { workoutId, exerciseTypeId };
 
     axios
-      //   .put(`${API_URL}/api/exercises/edit/${exerciseId}`, requestBody, {
-      //     headers: { Authorization: `Bearer ${storedToken}` },
-      //   })
       .put(`${API_URL}/api/exercises/edit/${exerciseId}`, requestBody)
       .then((response) => {
         setWorkoutId(0);
@@ -59,9 +53,9 @@ export default function EditExercisePage() {
     exerciseTypeList.length === 0 ? (
     <h1>Loading...</h1>
   ) : (
-    <div className="newExercise">
-      <form onSubmit={handleSubmit}>
-        <label>Select exercise type:</label>
+    <form onSubmit={handleSubmit} className="editExercise">
+      <h2>Edit Exercise</h2>
+      <div className="group">
         <select
           name="exerciseTypeId"
           value={exerciseTypeId}
@@ -76,8 +70,16 @@ export default function EditExercisePage() {
             </option>
           ))}
         </select>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+        <span className="highlight"></span>
+        <span className="bar"></span>
+        <label>Exercise name</label>
+      </div>
+      <button type="submit" className="button buttonBlue">
+        Update
+        <div className="ripples buttonRipples">
+          <span className="ripplesCircle"></span>
+        </div>
+      </button>
+    </form>
   );
 }

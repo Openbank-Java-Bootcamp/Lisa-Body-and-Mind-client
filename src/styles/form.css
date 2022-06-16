@@ -7,8 +7,9 @@ form {
   max-width: 340px;
   margin: 4em auto;
   padding: 2em 2em 1em 2em;
-  background: #fafafa;
+  background: #f0dabab5;
   border: 1px solid #ebebeb;
+  border-radius: 25px;
   box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 1px 0px,
     rgba(0, 0, 0, 0.09804) 0px 1px 2px 0px;
 }
@@ -27,7 +28,7 @@ input {
   padding: 10px 10px 10px 5px;
   -webkit-appearance: none;
   display: block;
-  background: #fafafa;
+  background: #f1e1c8;
   color: #636363;
   width: 100%;
   border: none;
@@ -37,10 +38,10 @@ input {
 
 select {
   font-size: 15px;
-  padding: 10px 10px 10px 5px;
+  padding: 15px 10px 10px 5px;
   -webkit-appearance: none;
   display: block;
-  background: #fafafa;
+  background: #f1e1c8;
   color: #636363;
   width: 100%;
   border: none;
@@ -48,12 +49,13 @@ select {
   border-bottom: 1px solid #757575;
 }
 
-input:focus {
+input:focus,
+select:focus {
   outline: none;
 }
 
 label {
-  color: #f1782f;
+  color: #888584;
   font-size: 18px;
   font-weight: normal;
   position: absolute;
@@ -68,15 +70,20 @@ input.used ~ label {
   top: -20px;
   transform: scale(0.75);
   left: -2px;
-  color: #2d358b;
+  color: #7d1d42;
 }
 
 .newSet input ~ label,
-input ~ label{
+.newRep input ~ label,
+.newExercise select ~ label,
+.editProgramPage input ~ label,
+.editWorkoutPage input ~ label,
+.editExercise select ~ label,
+.editSet input ~ label {
   top: -20px;
   transform: scale(0.75);
   left: -2px;
-  color: #2d358b;
+  color: #7d1d42;
 }
 
 .bar {
@@ -92,7 +99,8 @@ input ~ label{
   width: 0;
   bottom: 1px;
   position: absolute;
-  background: #3658c6;
+  background: #8e3361;
+  /* background: #7d1d42; */
   transition: all 0.2s ease;
 }
 
@@ -125,7 +133,9 @@ input:focus ~ .highlight {
 
 @keyframes inputHighlighter {
   from {
-    background: #3658c6;
+    background: #8e3361;
+
+  /* background: #7d1d42; */
   }
   to {
     width: 0;
@@ -148,7 +158,9 @@ input:focus ~ .highlight {
   letter-spacing: 1px;
   background: transparent;
   border: 0;
-  border-bottom: 2px solid #3160b6;
+  border-bottom: 2px solid #8e3361;
+
+  /* background: #7d1d42; */
   cursor: pointer;
   transition: all 0.15s ease;
 }
@@ -157,12 +169,14 @@ input:focus ~ .highlight {
 }
 
 .buttonBlue {
-  background: #3658c6;
+  background: #8e3361;
+
+  /* background: #7d1d42; */
   text-shadow: 1px 1px 0 rgba(39, 110, 204, 0.5);
 }
 
 .buttonBlue:hover {
-  background: #2d358b;
+  background: #7d1d42;
 }
 
 .ripples {
@@ -206,25 +220,3 @@ input:focus ~ .highlight {
     opacity: 0;
   }
 }
-
-/* 
-<form>
-        <div className="group">
-          <input type="text" />
-          <span className="highlight"></span>
-          <span className="bar"></span>
-          <label>Name</label>
-        </div>
-        <div className="group">
-          <input type="email" />
-          <span className="highlight"></span>
-          <span className="bar"></span>
-          <label>Email</label>
-        </div>
-        <button type="button" className="button buttonBlue">
-          Subscribe
-          <div className="ripples buttonRipples">
-            <span className="ripplesCircle"></span>
-          </div>
-        </button>
-      </form> */

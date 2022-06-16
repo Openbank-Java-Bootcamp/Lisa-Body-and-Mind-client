@@ -47,18 +47,25 @@ export default function EditProgramPage() {
   //   <h1>Loading...</h1>
   // ) :
   return (
-    <div className="editProgramPage">
-      <form onSubmit={handleSubmit}>
-        <label>Name:</label>
+    <form onSubmit={handleSubmit} className="editProgramPage">
+      <h2>Edit Program</h2>
+      <div className="group">
         <input
           type="text"
           name="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-
-        <button type="submit">Update Program</button>
-      </form>
-    </div>
+        <span className="highlight"></span>
+        <span className="bar"></span>
+        <label>Program name</label>
+      </div>
+      <button type="submit" className="button buttonBlue">
+        Update
+        <div className="ripples buttonRipples">
+          <span className="ripplesCircle"></span>
+        </div>
+      </button>
+    </form>
   );
 }

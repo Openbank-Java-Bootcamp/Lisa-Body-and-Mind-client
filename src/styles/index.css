@@ -20,7 +20,7 @@ a:hover {
   color: rgb(177, 100, 28);
 }
 
-.button-52 {
+.buttonBox {
   font-size: 16px;
   font-weight: 200;
   letter-spacing: 1px;
@@ -35,7 +35,7 @@ a:hover {
   touch-action: manipulation;
 }
 
-.button-52:after {
+.buttonBox:after {
   content: "";
   background-color: #f1792fa7;
   width: 100%;
@@ -47,7 +47,7 @@ a:hover {
   transition: 0.2s;
 }
 
-.button-52:hover:after {
+.buttonBox:hover:after {
   top: 0px;
   left: 0px;
 }
@@ -71,7 +71,7 @@ button.edit {
 }
 
 @media (min-width: 768px) {
-  .button-52 {
+  .buttonBox {
     padding: 8px 17px 8px;
   }
 }
