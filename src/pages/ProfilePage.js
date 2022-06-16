@@ -4,7 +4,6 @@ import axios from "axios";
 import { API_URL } from "../config";
 import { NewUser } from "../components/exportedComponents";
 import "../styles/ProfilePage.css";
-import { Button } from "antd";
 
 export default function ProfilePage() {
   const [userDetails, setUserDetails] = useState(null);
@@ -39,7 +38,7 @@ export default function ProfilePage() {
         <h2>{userDetails.fullName}</h2>
         <p className="title">{userDetails.username}</p>
         <p>{userDetails.email}</p>
-        <Button>Edit</Button>
+        <button>Edit</button>
       </div>
     </div>
   ) : (

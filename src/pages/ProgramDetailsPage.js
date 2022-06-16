@@ -4,7 +4,6 @@ import axios from "axios";
 import { API_URL } from "../config";
 import { WorkoutList, NewWorkout } from "../components/exportedComponents";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Button } from "antd";
 
 export default function ProgramDetailsPage() {
   const [program, setProgram] = useState(null);
@@ -51,7 +50,7 @@ export default function ProgramDetailsPage() {
       {program.userId === userId && (
         <>
           <Link to={`/programs/edit/${program.id}`}>Edit Program</Link>
-          <Button onClick={() => deleteProgram()}>Delete Program</Button>
+          <button onClick={() => deleteProgram()}>Delete Program</button>
         </>
       )}
 

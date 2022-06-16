@@ -26,14 +26,10 @@ export default function SetList({ exerciseId }) {
   ) : sets === null || sets.length === 0 ? (
     <h1>Loading Sets...</h1>
   ) : (
-    <div className="setsList">
-      <ul>
-        {sets.map((set, i) => (
-          <li key={set.id}>
-            <SetDetails set={set} index={i} />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      {sets.map((set, i) => (
+        <SetDetails set={set} index={i} key={set.id} />
+      ))}
+    </>
   );
 }

@@ -4,7 +4,7 @@ import axios from "axios";
 import { API_URL } from "../config";
 import { RepDetails } from "../components/exportedComponents";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Button } from "antd";
+import "../styles/SetDetails.css";
 
 export default function SetDetails({ set, index }) {
   const [userId, setUserId] = useState(null);
@@ -38,14 +38,15 @@ export default function SetDetails({ set, index }) {
   return set === null ? (
     <h1>Loading...</h1>
   ) : (
-    <div>
+    <div className="setDetails">
+      
       <p>
         <strong>Set {index + 1}</strong>
       </p>
       {set.exercise.workout.userId === userId && (
         <>
           <Link to={`/sets/edit/${set.id}`}>Edit Set</Link>
-          <Button onClick={() => deleteSet()}>Delete Set</Button>
+          <button onClick={() => deleteSet()}>Delete Set</button>
         </>
       )}
       <p>Rest: {set.rest.slice(3)} mins</p>

@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { API_URL } from "../config";
 import { NewRep } from "../components/exportedComponents";
-import { useAuth0 } from "@auth0/auth0-react";
-import { Button } from "antd";
 
 export default function RepDetails({ set, index }) {
   const [reps, setReps] = useState(null);
@@ -64,7 +62,7 @@ export default function RepDetails({ set, index }) {
       {/* THIS IS FOR THE EDIT NOT CREATE 
       {repsCreatedByUser && <NewRep set.id={set.id} />} */}{" "}
       {repsCreatedByUser && (
-        <Button onClick={() => deleteRep()}>Delete Rep</Button>
+        <button onClick={() => deleteRep()}>Delete Rep</button>
       )}
     </div>
   );

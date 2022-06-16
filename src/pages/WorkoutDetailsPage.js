@@ -4,7 +4,6 @@ import axios from "axios";
 import { API_URL } from "../config";
 import { ExerciseList, NewExercise } from "../components/exportedComponents";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Button } from "antd";
 
 export default function WorkoutDetailsPage() {
   const [workout, setWorkout] = useState(null);
@@ -51,7 +50,7 @@ export default function WorkoutDetailsPage() {
       {workout.userId === userId && (
         <>
           <Link to={`/workouts/edit/${workoutId}`}>Edit Workout</Link>
-          <Button onClick={() => deleteWorkout()}>Delete Workout</Button>
+          <button onClick={() => deleteWorkout()}>Delete Workout</button>
         </>
       )}
 
