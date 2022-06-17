@@ -1,10 +1,16 @@
 # Body & Mind App - Client
 
- <!-- 
- Demo(Optional) (Screenshots or GIFs of the application)
-  -->
-<!-- 
-## Description -->
+Bod&Mind is born from the phrase **Mens sana in corpore sano** in Latin, meaning _" a healthy mind in a healthy body "_. The phrase is used to explain that physical exercise plays or can play a big role in mental well-being.
+
+Our app creates a space for users to follow programs with different workouts and exercises, as well as set and rep instructions, created by our official trainers. As well as being able to create and customize their own programs.
+
+With a minimal and straightforward design, Body&Mind is the perfect place for you to **_take care of your mind by taking care of your body_**.
+
+<br/>
+
+## Application Structure
+
+<img src="./B&M.png">
 
 <br/>
 
@@ -30,21 +36,20 @@
 
 ## Routes
 
-| Route                                | Page Component      | Access             |
-| ------------------------------------ | ------------------- | ------------------ |
-| /                                    | `HomePage`            | Public             |
-| \*                                   | `ErrorPage`           | Public             |
-| /profile                             | `ProfilePage`         | Authenticated User |
-| /programs                            | `ProgramsPage`        | Authenticated User |
-| /programs/:programId                 | `ProgramDetailsPage`  | Authenticated User |
-| /programs/new                        | `CreateProgramPage`   | Authenticated User |
-| /programs/edit/:programId            | `EditProgramPage`     | Authenticated User |
-| /workouts/:workoutId                 | `WorkoutDetailsPage`  | Authenticated User |
-| /workouts/edit/:workoutId            | `EditWorkoutPage`     | Authenticated User |
-| /exercises/:exerciseId               | `ExerciseDetailsPage` | Authenticated User |
-| /exercises/edit/:exerciseId          | `EditExercisePage`    | Authenticated User |
-| /sets/edit/:setId                    | `EditSetPage`         | Authenticated User |
-
+| Route                       | Page Component        | Access             |
+| --------------------------- | --------------------- | ------------------ |
+| /                           | `HomePage`            | Public             |
+| \*                          | `ErrorPage`           | Public             |
+| /profile                    | `ProfilePage`         | Authenticated User |
+| /programs                   | `ProgramsPage`        | Authenticated User |
+| /programs/:programId        | `ProgramDetailsPage`  | Authenticated User |
+| /programs/new               | `CreateProgramPage`   | Authenticated User |
+| /programs/edit/:programId   | `EditProgramPage`     | Authenticated User |
+| /workouts/:workoutId        | `WorkoutDetailsPage`  | Authenticated User |
+| /workouts/edit/:workoutId   | `EditWorkoutPage`     | Authenticated User |
+| /exercises/:exerciseId      | `ExerciseDetailsPage` | Authenticated User |
+| /exercises/edit/:exerciseId | `EditExercisePage`    | Authenticated User |
+| /sets/edit/:setId           | `EditSetPage`         | Authenticated User |
 
 <br/>
 
@@ -63,7 +68,7 @@
 - `RepDetails` used in SetDetails.
 - `NewRep` used in RepDetails.
 
-Other 
+Other
 
 - `Navbar` used globally.
 - `NewUser` used in HomePage and ProfilePage when user first logs in to add more details.
