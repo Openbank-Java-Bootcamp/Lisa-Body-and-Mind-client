@@ -51,39 +51,24 @@
 ## Components
 
 - `ProgramList` used in ProgramsPage.
-
 - `WorkoutList` used in ProgramDetailsPage.
-
 - `NewWorkout` used in ProgramDetailsPage.
-
 - `ExerciseList` used in WorkoutDetailsPage.
-
 - `NewExercise` used in WorkoutDetailsPage.
-
 - `SetList` used in ExerciseDetailsPage.
-
 - `NewSet` used in ExerciseDetailsPage.
-
 - `SetDetails` used in SetList.
-
 - `RepDetails` used in SetDetails.
-
 - `SetDetails` used in SetList.
-
 - `RepDetails` used in SetDetails.
-
 - `NewRep` used in RepDetails.
 
 Other 
 
 - `Navbar` used globally.
-
 - `NewUser` used in HomePage and ProfilePage when user first logs in to add more details.
-
 - `NoDataMessage` used in varios components when a certain call returns no objects as they've yet to be created.
-
 - `PrivateRoute` to protect routes and redirect to log in / sign up page if there isn't an authenticated and authorized user.
-
 - `LoginButton` and `LogoutButton` Auth0 buttons.
 
 <br/>
