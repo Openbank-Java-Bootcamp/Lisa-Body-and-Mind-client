@@ -44,7 +44,7 @@ export default function WorkoutDetailsPage() {
     <div className="workoutDetails details">
       <h3>
         {workout.name}{" "}
-        {userId === null &&
+        {userId != null &&
           workout.userId === userId &&
           workout.creator != "TRAINER" && (
             <>
@@ -76,7 +76,7 @@ export default function WorkoutDetailsPage() {
 
       <ExerciseList workoutId={workoutId} />
 
-      {userId === null &&
+      {userId != null &&
         workout.userId === userId &&
         workout.creator != "TRAINER" && <NewExercise workoutId={workoutId} />}
     </div>

@@ -48,22 +48,24 @@ export default function ProgramDetailsPage() {
     <div className="programDetails details">
       <h3>
         {program.name}{" "}
-        {program.userId === userId && program.creator !== "TRAINER" && (
-          <>
-            <Link to={`/programs/edit/${program.id}`}>
-              <button className="buttonBox edit" role="button">
-                <span className="material-symbols-outlined">edit</span>
+        {userId != null &&
+          program.userId === userId &&
+          program.creator != "TRAINER" && (
+            <>
+              <Link to={`/programs/edit/${program.id}`}>
+                <button className="buttonBox edit" role="button">
+                  <span className="material-symbols-outlined">edit</span>
+                </button>
+              </Link>
+              <button
+                className="buttonBox delete"
+                role="button"
+                onClick={() => deleteProgram()}
+              >
+                <span className="material-symbols-outlined">delete</span>
               </button>
-            </Link>
-            <button
-              className="buttonBox delete"
-              role="button"
-              onClick={() => deleteProgram()}
-            >
-              <span className="material-symbols-outlined">delete</span>
-            </button>
-          </>
-        )}
+            </>
+          )}
       </h3>
 
       {program.creator === "TRAINER" && (
@@ -74,9 +76,9 @@ export default function ProgramDetailsPage() {
 
       <WorkoutList programId={program.id} />
 
-      {userId === null &&
+      {userId != null &&
         program.userId === userId &&
-        program.creator !== "TRAINER" && <NewWorkout programId={program.id} />}
+        program.creator != "TRAINER" && <NewWorkout programId={program.id} />}
     </div>
   );
 }
