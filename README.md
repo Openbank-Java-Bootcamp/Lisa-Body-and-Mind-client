@@ -95,3 +95,5 @@ Other
 [Auth0 Step to Step guide for react SPA](https://auth0.com/docs/quickstart/spa/react/01-login)
 
 [Trello](https://trello.com/b/xrk45zcW/bodymind)
+
+[Presentation slides](https://prezi.com/view/JRALWjNTbLOeUsSti07n/)
