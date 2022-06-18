@@ -4,7 +4,16 @@ import axios from "axios";
 import { API_URL } from "../config";
 import { NewSet, SetList } from "../components/exportedComponents";
 import { useAuth0 } from "@auth0/auth0-react";
+import image1 from "../assets/asset1.png";
+import image2 from "../assets/asset2.png";
+import image3 from "../assets/asset-2.png";
+import image4 from "../assets/asset-3.png";
+import image5 from "../assets/asset-4.png";
+import image6 from "../assets/asset-5.png";
+import image7 from "../assets/asset-6.png";
 import "../styles/ExerciseDetailsPage.css";
+
+const images = [image1, image2, image3, image4, image5, image6, image7];
 
 export default function ExerciseDetailsPage() {
   const [exercise, setExercise] = useState(null);
@@ -45,17 +54,10 @@ export default function ExerciseDetailsPage() {
     <div className="exerciseDetails details">
       <div className="row">
         <>
-          {exercise.exerciseType.image !== "" ? (
-            <img
-              src={exercise.exerciseType.image}
-              alt={exercise.exerciseType.name}
-            />
-          ) : (
-            <img
-              src="https://media.istockphoto.com/photos/cat-exercising-on-bench-press-picture-id1207832240?k=20&m=1207832240&s=612x612&w=0&h=PmkB7TGeBfHvBvljPmDozS4X0zP5P2pRiwKOX6vqTLg="
-              alt="Cat Exercising"
-            />
-          )}
+          <img
+            src={images[Math.floor(Math.random() * images.length)]}
+            alt="Cat Exercising"
+          />
         </>
 
         <div className="col">

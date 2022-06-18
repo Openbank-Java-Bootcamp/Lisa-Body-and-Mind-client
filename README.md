@@ -78,6 +78,8 @@ Other
 
 <br/>
 
+<img src="./B&M-Demo.gif" alt="demo gif">
+
 ## Future Work
 
 - Implementing exercise sessions so users can train with Boy&Mind in real time.

@@ -4,6 +4,16 @@ import axios from "axios";
 import { API_URL } from "../config";
 import { NewUser } from "../components/exportedComponents";
 import "../styles/ProfilePage.css";
+import image1 from "../assets/asset1.png";
+import image2 from "../assets/asset2.png";
+import image3 from "../assets/asset-1.png";
+import image4 from "../assets/asset-2.png";
+import image5 from "../assets/asset-3.png";
+import image6 from "../assets/asset-4.png";
+import image7 from "../assets/asset-5.png";
+import image8 from "../assets/asset-6.png";
+
+const images = [image1, image2, image3, image4, image5, image6, image7, image8];
 
 export default function ProfilePage() {
   const [userDetails, setUserDetails] = useState(null);
@@ -28,9 +38,8 @@ export default function ProfilePage() {
     <div className="profilePage">
       <div className="card">
         <img
-          src={userDetails.image}
+          src={images[Math.floor(Math.random() * images.length)]}
           alt={user.email}
-          style={{ width: "25%" }}
         />
         <h2>{userDetails.fullName}</h2>
         <p className="title">

@@ -84,17 +84,6 @@ export default function NewUser() {
             <label>Full name</label>
           </div>
 
-          <div className="group">
-            <input
-              type="text"
-              name="image"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-            />
-            <span className="highlight"></span>
-            <span className="bar"></span>
-            <label>Image</label>
-          </div>
           <button type="submit" className="button buttonBlue">
             Add user details
             <div className="ripples buttonRipples">
